@@ -110,10 +110,36 @@
 
     // Function Definition
     function myFunction(){
-        echo "Inside Function";
+        echo "Inside Function<br>";
     }
 
     // Function Calling
     myFunction();
+
+    // Function with Parameters
+    function greeting($name = "World"){
+        echo "Hello, ".$name."<br>";
+    }
+
+    greeting("WhiteHatGamer");
+    greeting();
+
+    // Function with return
+    function add($num1,$num2){
+        return $num1+$num2;
+    }
+
+    $sum = add(6,86);
+
+    echo "sum = $sum <br>";
+
+    // Function pass by reference
+    function addTen(&$num1){
+        $num1 += 10;
+    }
+
+    echo "Before addTen $num1 <br>";
+    addTen($num1);
+    echo "After addTen $num1 <br>";
 ?>
 
