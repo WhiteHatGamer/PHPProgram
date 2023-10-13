@@ -63,4 +63,57 @@
     
     echo $ids[4563];
     echo"<br>";
+
+    # Loops
+    /**
+     * For
+     * While
+     * Do While
+     * Foreach
+     */
+
+    echo "For Loop<br>";
+    for($i = 0;$i < 10;$i++){
+        echo "Number".$i;
+        echo"<br>";
+    }
+
+    echo "While Loop<br>";
+    $i = 0;
+    while ($i <= 10) {
+        echo $i;
+        echo"<br>";
+        $i++;
+    }
+
+    echo "Do-While Loop<br>";
+    $i=0;
+    do {
+        echo $i;
+        echo"<br>";
+        $i++;
+    } while ($i <= 10);
+
+    echo "For Each<br>";
+    $people = [1,2,3,4,5,6,7,8,9,0];
+    foreach ($people as $i) {
+        echo $i;
+        echo "<br>";
+    }
+
+    echo "Foreach with Key and value <br>";
+    $HexAssociative = [10=>'a',11=>'b',12=>'c',13=>'d',14=>'e',15=>'f']; 
+    foreach($HexAssociative as $k => $i){
+        echo $k.": ".$i;
+        echo '<br>';
+    }
+
+    // Function Definition
+    function myFunction(){
+        echo "Inside Function";
+    }
+
+    // Function Calling
+    myFunction();
 ?>
+
