@@ -141,5 +141,39 @@
     echo "Before addTen $num1 <br>";
     addTen($num1);
     echo "After addTen $num1 <br>";
-?>
 
+    # Conditional Statements and operators
+    
+    // IF conditional value ==, >, < ,!= 
+    if($num1 == 14){
+        echo "num1 is 14<br>";
+    }else{
+        echo "num1 is not 14<br>";
+    }
+
+    // If data type comparison === 
+    if ($num1 === "a"){
+        echo "num1 is string<br>";
+    }elseif($num1 === 1){
+        echo "num1 is number<br>";
+    }else{
+        echo "num1 is unknown type<br>";
+    }
+
+    // If Logical Operators || , OR, &&, AND, XOR
+    $num1 = 65;
+    if($num1>60 || $num1 < 15){
+        echo "num1 is under aged or over aged<br>";
+    }
+
+    // Switch
+    switch ($num1) {
+        case 1:
+            echo "num1 is 1<br>";
+            break;
+        
+        default:
+            echo "num1 is not 1<br>";
+            break;
+    }
+?>
