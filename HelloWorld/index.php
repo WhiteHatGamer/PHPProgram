@@ -171,9 +171,20 @@
         case 1:
             echo "num1 is 1<br>";
             break;
-        
         default:
             echo "num1 is not 1<br>";
             break;
     }
+
+    date_default_timezone_set('Asia/Kolkata');
+    echo date('H:i:s l d/m/Y');
+
+    $timestamp = mktime(15,37,16,10,10,23);
+    echo "<br>";
+    echo (date('H:i:s l d/m/Y', $timestamp));
+
+    $timestamp2 = strtotime("15th October 2023 13:05");
+    echo "<br>";
+    echo (date('H:i:s l d/m/Y', $timestamp2));
+
 ?>
