@@ -186,5 +186,11 @@
     $timestamp2 = strtotime("15th October 2023 13:05");
     echo "<br>";
     echo (date('H:i:s l d/m/Y', $timestamp2));
-
 ?>
+<html>
+    <body>
+        <br>
+        <h2>
+        <a href="/HelloWorld/website1/index.php">My Website</a>
+    </body>
+</html>
