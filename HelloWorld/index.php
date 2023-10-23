@@ -186,11 +186,25 @@
     $timestamp2 = strtotime("15th October 2023 13:05");
     echo "<br>";
     echo (date('H:i:s l d/m/Y', $timestamp2));
+
+    /*foreach ($_SERVER as $key) {
+        echo $key;
+        echo "<br>";
+    }*/
+    echo '<br>';
+    echo $_SERVER['HTTP_USER_AGENT'];
+    echo "<br>";
+    if(str_contains($_SERVER['HTTP_USER_AGENT'], 'Chrome')){
+        echo "You are using Chrome";
+    }else{
+        echo "You are not using Chrome";
+    }
+
 ?>
 <html>
     <body>
         <br>
         <h2>
         <a href="/HelloWorld/website1/index.php">My Website</a>
-    </body>
+    </body> 
 </html>
