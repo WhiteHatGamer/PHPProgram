@@ -46,7 +46,7 @@
     echo "Actions:<br>"
 ?>
 <!-- Add Note -->
-<a href="AddNote/index.php">Create Note</a><br>
+<a href="CreateNote/index.php">Create Note</a><br>
 <!-- List Note -->
 <a href="ReadNote/index.php">Read Notes</a><br>
 <!-- Update Note -->
