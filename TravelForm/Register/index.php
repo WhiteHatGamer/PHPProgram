@@ -10,7 +10,7 @@
         <h3>Enter Details:</h3>
         <form action="action.php" method="post">
             <label for='email'>Your Email:</label>
-            <input name='email' id='email' type="email">
+            <input name='email' id='email' type="email" autofocus>
             <br>
             <label for='password'>Password:</label>
             <input name='password' id='password' type='password'>

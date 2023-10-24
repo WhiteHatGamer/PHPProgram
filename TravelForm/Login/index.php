@@ -16,7 +16,7 @@
             exit;
         }
         if($result->num_rows > 0){
-            
+
             // Authentication Successful
             //header("Location: ../AddNote/index.php");
             echo "<h3> Login Success</h3>";
@@ -52,7 +52,7 @@
         <h3>Enter User Details:</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <label for='email'>Your Email:</label>
-            <input name='email' id='email' type="email">
+            <input name='email' id='email' type="email" autofocus>
             <br>
             <label for='password'>Password:</label>
             <input name='password' id='password' type='password'>
