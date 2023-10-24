@@ -1,3 +1,46 @@
+<?php
+    if(isset($_POST['submit'])){
+
+        // Including Env Variables with Credentials
+        include "../var.php";
+
+        // Connecting to SQL Database
+        $Mysqli = mysqli_connect($Server, $UserName, $Password, $Database, $port);
+
+        // Check if User Exists
+        try {
+
+            // Exception Handling of mysql Authentication Request to Hide any Password Errors
+            $result = $Mysqli->query("SELECT * FROM $UserTable WHERE email='".htmlspecialchars($_POST['email'])."' && password='".htmlspecialchars($_POST['password'])."'");
+        } catch (\Throwable $th) {
+
+            // Error Catches
+            echo "<h3>Error 500</h3><br>Server Error";
+            exit;
+        }
+        if($result->num_rows > 0){
+            // Authentication Successful
+            //header("Location: ../AddNote/index.php");
+            echo "<h3> Login Success</h3>";
+            echo "Click the link to go to Dashboard.";
+            for($i=0;$i<2;$i++){
+                echo ".";
+                sleep(1);
+            }
+            echo "<br>";
+            // Starting Session
+            session_start();
+            $_SESSION['email'] = htmlspecialchars($_POST['email']);
+            echo('<a href="../AddNote/index.php">Dashboard</a>');
+            exit;
+        }else{
+
+            // Authentication Not Successful
+            echo "<h3> Login Failed</h3><br>";
+            echo "Retry Again...<br>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
