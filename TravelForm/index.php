@@ -1,18 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Contact Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | Travel Note</title>
     </head>
     <body>
-        <h1>Contact Form</h1>
-        <h3>Enter Details:</h3>
-        <form action="action.php" method="post">
-            <label for='name'>Your Name:&emsp;&nbsp;</label>
-            <input name='name' id='name' type="text">
-            <br>
-            <label for='contact'>Contact Email:&nbsp;</label>
-            <input name='contact' id='contact' type='email'>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
+        <h1>Home</h1>
+        <br>
+        <a href="Register/index.php">Register</a>
+        <br>
+        <a href="Login/index.php">LogIn</a>
     </body>
 </html>
