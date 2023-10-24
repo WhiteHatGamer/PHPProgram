@@ -2,10 +2,7 @@
     if(isset($_POST['submit'])){
 
         // Including Env Variables with Credentials
-        include "../var.php";
-
-        // Connecting to SQL Database
-        $Mysqli = mysqli_connect($Server, $UserName, $Password, $Database, $port);
+        require "../var.php";
 
         // Check if User Exists
         try {
