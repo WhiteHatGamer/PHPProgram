@@ -14,7 +14,7 @@
         <h3>Enter Details:</h3>
         <form action="action.php" method="post">
             <label for='note'>Your Note:&emsp;&nbsp;</label>
-            <input name='note' id='note' type="text">
+            <input name='note' id='note' type="text" autofocus required>
             <br>
             <button type="submit">Submit</button>
         </form>
