@@ -2,7 +2,7 @@
 
     // Adding MySQL Connection
     require "../var.php";
-    
+
     // Starting Session
     session_start();
 
@@ -54,6 +54,9 @@
 <!-- Delete Note -->
 <a href="DeleteNote/index.php">Delete Note</a><br>
 <!-- Log out -->
+<form action="Password.php" method="post">
+    <button type="submit">Change Password</button>
+</form>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-<button name="logout" type="submit">Log Out</button>
+    <button name="logout" type="submit">Log Out</button>
 </form>
