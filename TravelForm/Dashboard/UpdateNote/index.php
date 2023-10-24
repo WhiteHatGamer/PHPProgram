@@ -12,6 +12,24 @@
         echo '<a href="../index.php">Home</a><br>';
         exit;
     }
+
+    // Checking if Submitted Already
+    if(isset($_POST['submit'])){
+        $Time = $_SESSION['TimeStamp'][$_POST['number']-1] ?? NULL;
+
+        if($Time == NULL){
+            echo "<h3>Invalid Note Number! Try Again</h3>";
+        }else{
+            $edit = $_POST['edit'];
+            $result = $Mysqli->query(
+                "UPDATE $NoteTable
+                SET note='$edit'
+                WHERE create_time='$Time'"
+            );
+            echo "Note Edited";
+        }
+    }
+
     // Getting Every Notes Saved from User
     $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
 
