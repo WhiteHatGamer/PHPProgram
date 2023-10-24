@@ -52,10 +52,10 @@
         <h3>Enter User Details:</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <label for='email'>Your Email:</label>
-            <input name='email' id='email' type="email" autofocus>
+            <input name='email' id='email' type="email" autofocus required>
             <br>
             <label for='password'>Password:</label>
-            <input name='password' id='password' type='password'>
+            <input name='password' id='password' type='password' required>
             <br>
             <button type="submit" name="submit">Submit</button>
         </form>
