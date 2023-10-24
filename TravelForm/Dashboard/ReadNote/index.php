@@ -5,3 +5,7 @@
         echo '<a href="../index.php">Home</a><br>';
         exit;
     }
+    // Return To Dashboard
+    echo "<br>Goto ";
+    echo "<a href='../index.php'>Dashboard</a>";
+?>
