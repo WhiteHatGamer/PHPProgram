@@ -24,15 +24,8 @@
     );
     echo "<h3>Note Saved</h3>";
 
-    // Getting Every Notes Saved from User
-    $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
-
-    echo "<br><h5>Saved Notes:</h5><br>";
-    foreach ($result->fetch_all() as $key) {
-        echo "Modified Time:".$key[0];
-        echo "&emsp;";
-        echo "Note: ".$key[2];
-        echo "<br>";
-    }
+    // Return To Dashboard
+    echo "Goto ";
+    echo "<a href='../index.php'>Dashboard</a>";
     
-    ?>
+?>
