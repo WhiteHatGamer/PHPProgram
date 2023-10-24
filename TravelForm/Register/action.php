@@ -1,15 +1,7 @@
 <?php
 
     // Including Env Variables with Credentials
-    include "../var.php";
-
-    // Connect to database using Credentials
-    try {
-        $Mysqli = mysqli_connect($Server, $UserName,  $Password, $Database, $port);
-    } catch (\Throwable $th) {
-        echo "ERROR 500 <br><br>Server Error";
-        exit;
-    }
+    require "../var.php";
 
     // Checking if Connection Success
     if($Mysqli->host_info==NULL){
