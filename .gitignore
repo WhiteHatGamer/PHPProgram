@@ -29,4 +29,8 @@
 .vscode/
 
 # Secuirity Keys
+
 TravelForm/var.php
+
+#user
+DUMP/
