@@ -1,4 +1,9 @@
 <?php
+
+    // Adding MySQL Connection
+    require "../var.php";
+    
+    // Starting Session
     session_start();
 
     include "../var.php";
@@ -13,6 +18,16 @@
     echo "Hello ".$_SESSION['email'];
 
     // Add Menu
+    echo "Actions:<br>"
+?>
+<!-- Add Note -->
+<a href="AddNote/index.php">Create Note</a><br>
+<!-- List Note -->
+<a href="ReadNote/index.php">Read Notes</a><br>
+<!-- Update Note -->
+<a href="UpdateNote/index.php">Update Notes</a><br>
+<!-- Delete Note -->
+<a href="DeleteNote/index.php">Delete Note</a><br>
     // Add Note
     // List Note
     // Update Note
