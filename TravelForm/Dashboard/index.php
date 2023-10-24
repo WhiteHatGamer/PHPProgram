@@ -12,6 +12,13 @@
         exit;
     }
 
+    // Checking If User is Logged In
+    if(!isset($_SESSION['email'])){
+        echo "<h3>You Are Logged out Please Login Again!!!</h3><br>";
+        echo '<a href="../index.php">Home</a><br>';
+        exit;
+    }
+
     // Get Name from db
     $result = $Mysqli->query("SELECT name FROM user WHERE email='".$_SESSION['email']."'");
     $name = $result->fetch_row()[0];
