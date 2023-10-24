@@ -16,6 +16,7 @@
             exit;
         }
         if($result->num_rows > 0){
+            
             // Authentication Successful
             //header("Location: ../AddNote/index.php");
             echo "<h3> Login Success</h3>";
@@ -25,10 +26,11 @@
                 sleep(1);
             }
             echo "<br>";
+
             // Starting Session
             session_start();
             $_SESSION['email'] = htmlspecialchars($_POST['email']);
-            echo('<a href="../AddNote/index.php">Dashboard</a>');
+            echo('<a href="../Dashboard/index.php">Dashboard</a>');
             exit;
         }else{
 
