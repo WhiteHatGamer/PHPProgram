@@ -18,7 +18,7 @@
         if($result->num_rows > 0){
 
             // Authentication Successful
-            //header("Location: ../AddNote/index.php");
+            //header("Location: ../CreateNote/index.php");
             echo "<h3> Login Success</h3>";
             echo "Click the link to go to Dashboard.";
             for($i=0;$i<2;$i++){
