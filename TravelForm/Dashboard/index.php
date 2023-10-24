@@ -6,10 +6,11 @@
     // Starting Session
     session_start();
 
-    include "../var.php";
-
-    // Connecting to Database
-    $Mysqli = mysqli_connect($server, $UserName, $Password, $Database, $port);
+    if(isset($_POST['logout'])){
+        session_destroy();
+        header("Location: ../index.php");
+        exit;
+    }
 
     // Get Name from db
     $result = $Mysqli->query("SELECT name FROM user WHERE email='".$_SESSION['email']."'");
@@ -45,9 +46,7 @@
 <a href="UpdateNote/index.php">Update Notes</a><br>
 <!-- Delete Note -->
 <a href="DeleteNote/index.php">Delete Note</a><br>
-    // Add Note
-    // List Note
-    // Update Note
-    // Delete Node
-    
-?>
+<!-- Log out -->
+<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+<button name="logout" type="submit">Log Out</button>
+</form>
