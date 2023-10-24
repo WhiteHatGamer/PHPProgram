@@ -13,6 +13,9 @@
         echo "ERROR 500 <br><br>Server Error";
         exit;
     }
+
+    // Include env Variable
+    require "../../var.php";
     
     // Check if Database is Connected
     if($Mysqli->host_info==NULL){
