@@ -13,9 +13,26 @@
 
     // Get Name from db
     $result = $Mysqli->query("SELECT name FROM user WHERE email='".$_SESSION['email']."'");
+    $name = $result->fetch_row()[0];
+    if(isset($name)){
+        $_SESSION['name'] = $name;
+    }else{
+        $_SESSION['name'] = $_SESSION['email'];
+    }
+    ?>
 
-    // Greet
-    echo "Hello ".$_SESSION['email'];
+    <!-- Adding Name in Title -->
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Dashboard | <?php echo htmlspecialchars($_SESSION['name'])?></title>
+        </head>
+    </html>
+
+    <?php
+    echo "<h3>Hello ".$_SESSION['name']."</h1>";
 
     // Add Menu
     echo "Actions:<br>"
