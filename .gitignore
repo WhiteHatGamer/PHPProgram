@@ -34,3 +34,6 @@ TravelForm/var.php
 
 #user
 DUMP/
+
+# .gitignore Extension
+/TravelForm/notes.txt
