@@ -40,7 +40,7 @@
     
     define("MY_NAME", "WhiteHatGamer");
     
-    // Title: ARRAYS
+    // TITLE: ARRAYS
     $numbers = array(0,1,2,3,4,5,6,7,8,9);
     
     echo $numbers[5];
@@ -64,7 +64,7 @@
     echo $ids[4563];
     echo"<br>";
 
-    # Loops
+    # TITLE: Loops
     /**
      * For
      * While
@@ -109,6 +109,7 @@
     }
 
     // Function Definition
+    // TITLE: Function Definition
     function myFunction(){
         echo "Inside Function<br>";
     }
