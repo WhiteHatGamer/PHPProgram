@@ -3,7 +3,7 @@
 
     // Checking If User is Logged In
     if(isset($_SESSION['email'])){
-        sleep(3);
+        sleep(2);
         header('Location: Dashboard/index.php');
     }
 ?>
