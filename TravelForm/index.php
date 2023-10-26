@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    // Checking If User is Logged In
+    if(isset($_SESSION['email'])){
+        sleep(3);
+        header('Location: Dashboard/index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
