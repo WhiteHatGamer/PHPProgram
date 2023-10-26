@@ -289,6 +289,15 @@
     addTen($num1);
     echo "After addTen $num1 <br>";
 
+    // functions with variable
+    echo "###Variable Arguments###<br>";
+    function VarDisplayFunction(...$numbers){
+        foreach ($numbers as $key) {
+            echo $key;
+        }
+    }
+    VarDisplayFunction('a','e','i','o','u');
+    echo "<br>";
 
     // TITLE: Date and Time
 
