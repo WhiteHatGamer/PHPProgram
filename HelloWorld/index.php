@@ -78,6 +78,16 @@
         echo"<br>";
     }
 
+    // Faster Than adding the Size variable in condition
+    for($i=0,$size=count($numbers);$i<$size;$i++){
+        if($i==10){
+            echo "Breaking before 10<br>";
+            break 1;
+        }
+        echo "numbers['$i']: ".$numbers[$i]."<br>";
+        echo mt_rand(000000,999999)."<br>";
+    }
+
     echo "###While Loop###<br>";
     $i = 0;
     while ($i <= 10) {
