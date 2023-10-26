@@ -261,7 +261,9 @@
     // Function Calling
     myFunction();
 
-    // Function with Parameters
+    // Function with Parameters 
+    // - Can also make class as default parameter and call
+    // - Default Parameter need to be at the end to prevent few argument error
     function greeting($name = "World"){
         echo "Hello, ".$name."<br>";
     }
@@ -287,39 +289,8 @@
     addTen($num1);
     echo "After addTen $num1 <br>";
 
-    # Conditional Statements and operators
-    
-    // IF conditional value ==, >, < ,!= 
-    if($num1 == 14){
-        echo "num1 is 14<br>";
-    }else{
-        echo "num1 is not 14<br>";
-    }
 
-    // If data type comparison === 
-    if ($num1 === "a"){
-        echo "num1 is string<br>";
-    }elseif($num1 === 1){
-        echo "num1 is number<br>";
-    }else{
-        echo "num1 is unknown type<br>";
-    }
-
-    // If Logical Operators || , OR, &&, AND, XOR
-    $num1 = 65;
-    if($num1>60 || $num1 < 15){
-        echo "num1 is under aged or over aged<br>";
-    }
-
-    // Switch
-    switch ($num1) {
-        case 1:
-            echo "num1 is 1<br>";
-            break;
-        default:
-            echo "num1 is not 1<br>";
-            break;
-    }
+    // TITLE: Date and Time
 
     date_default_timezone_set('Asia/Kolkata');
     echo date('H:i:s l d/m/Y');
@@ -331,6 +302,8 @@
     $timestamp2 = strtotime("15th October 2023 13:05");
     echo "<br>";
     echo (date('H:i:s l d/m/Y', $timestamp2));
+
+    // TITLE: Global Variable $_SERVER
 
     /*foreach ($_SERVER as $key) {
         echo $key;
