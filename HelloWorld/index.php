@@ -118,7 +118,76 @@
         echo '<br>';
     }
 
-    // Function Definition
+    # TITLE: operators
+
+    // Ternary Operator
+
+    $max = 4>10? 4 : 10;
+    echo "Max is $max<br>";
+
+    // If Logical Operators || , OR, &&, AND, XOR, !
+    $num1 = 65;
+    if($num1>60 || $num1 < 15){
+        echo "num1 is under aged or over aged<br>";
+    }
+
+    //  Error control Operators - @
+
+    $MyFile = @file('Non-existing File');// or die ('Failed Opening File: Error('.error_get_last()['message'].')'); // This Stops the remaining File From Executing
+    echo error_get_last()['message']."<br>";
+
+    $value = @$cache['key'];
+    echo error_get_last()['message']."<br>";
+
+    // Execution Operator - ` ` - This operator Runs shell Code and can store in variables
+
+    $output = `ls`;
+    echo "<pre>$output</pre>";
+
+    // String Concatenation Operators
+
+    $concat = $str1 . $str2;
+    $alsoConcat = "$str1 $str2"; // same as $concat
+
+    // Array Operations - + == === != <> !==
+
+    $a = ['A' => "Apple", 'B' => "Banana"];
+    $b = ['A' => "Airplane", 'B'=> "Bat", 'C'=>"Cherry"];
+
+    echo "Union A+B: ";
+    print_r($a + $b);
+    echo "<br>";
+    echo "Union B+A: ";
+    print_r($b + $a);
+    echo "<br>";
+
+    $a = array("apple", "banana");
+    $b = array(1=>"banana", 0=>"apple");
+    echo "a==b: ";
+    var_dump($a==$b);
+    echo "<br> a===b: ";
+    var_dump($a===$b);
+    echo "<br>";
+
+    // Type Operator - instanceof - Checks whether the object is of given type
+    interface MyInterface{}
+    class MyClass implements MyInterface{}
+    class NotMyClass{}
+    class ChildClass extends MyClass{}
+
+    $a = new MyClass;
+    $b = new ChildClass;
+
+    echo " \$a Instance of MyClass: ";
+    var_dump($a instanceof MyClass);
+    echo "<br> \$a instance of NotMyClass: ";
+    var_dump($a instanceof NotMyClass);
+    echo "<br> \$b instance of MyClass: ";
+    var_dump($b instanceof MyClass);
+    echo "<br> \$a instance of MyInterface: ";
+    var_dump($a instanceof MyInterface);
+    echo "<br>";
+
     // TITLE: Function Definition
     function myFunction(){
         echo "Inside Function<br>";
