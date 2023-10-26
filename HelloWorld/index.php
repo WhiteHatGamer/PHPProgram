@@ -33,8 +33,6 @@
     $bool4 = true;
     
     $sum = $num1 + $float1;
-    $concat = $str1 . $str2;
-    $alsoConcat = "$str1 $str2"; // same as $concat
     
     $Quotes = "he said \"hello\" ";
     
@@ -187,6 +185,73 @@
     echo "<br> \$a instance of MyInterface: ";
     var_dump($a instanceof MyInterface);
     echo "<br>";
+
+    // TITLE: Control Structures
+    
+    $num1 = 14;
+
+    // IF conditional value ==, >, < ,!= 
+    if($num1 == 14){
+        echo "num1 is 14<br>";
+    }else{
+        echo "num1 is not 14<br>";
+    }
+
+    // If data type comparison === 
+    if($num1 === 'a'){
+        echo "\$num1 is String<br>";
+    }elseif ($num1 === 1) {
+        echo "\$num1 is Number <br>";
+    }else{
+        echo "num1 is of unknown type<br>";
+    }
+
+    // Switch
+    switch ($num1) {
+        case 1:
+            echo "1st Case: num1 is 1<br>";
+            break;
+        case 5:
+            echo "2nd Case: num1 is 1<br>";
+            break;
+        case 14:
+            echo "3rd Case: num1 is 14<br>";
+            break;
+        default:
+            echo "Default Case: num1 is not 1<br>";
+            break;
+    }
+
+    // match Conditional
+
+    $guess = 6;
+    echo match ($guess) {
+        4 => "Guessed Less Than Actual<br>",
+        6 => "Guessed Greater Than Actual<br>",
+        5 => "Your Guess is Correct<br>",
+        default => "Wrong Guess. Please Try Again!!<br>",
+    };
+
+    $age = 24;
+    // Checked by correct order
+    echo match (true) {
+        $age>=65 => "Senior<br>",
+        $age>=18 => "Adult<br>",
+        $age>=12 => "Teen<br>",
+        default => "Child<br>",
+    };
+
+    // Declare - 
+    
+    // Ticks are a Statement Trigger where it triggers on every n statements declared
+    // declare(ticks = 30);
+    // function TickHandler(){
+    //     echo "!!!!!!!!!!!!!!!!!!!!Tick Triggered!!!!!!!!!!!!!!!!!!!!!!<br>";
+    // }
+    // register_tick_function('TickHandler');
+
+    // Encoding - using declare of encoding sets the encoding of the scripts below
+    // declare (Encoding = 'ISO-8859-1');
 
     // TITLE: Function Definition
     function myFunction(){
