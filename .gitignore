@@ -30,12 +30,13 @@
 
 # Secuirity Keys
 
-TravelForm/var.php
+TravelPlanner/var.php
 
 #user
 DUMP/
 
 # .gitignore Extension
-/TravelForm/notes.txt
+/TravelPlanner/notes.txt
 /HelloWorld/website1/Uploads
 /HelloWorld/vars.php
+/TravelPlanner/var.php
