@@ -16,7 +16,7 @@
         try {
 
             // Exception Handling of mysql Authentication Request to Hide any Password Errors
-            $result = $Mysqli->query("SELECT * FROM $UserTable WHERE email='".htmlspecialchars($_POST['email'])."' && password='".htmlspecialchars($_POST['password'])."'");
+            $result = $Mysqli->query("SELECT * FROM $UserTable WHERE email='".htmlspecialchars($_POST['email'])."' && password=md5('".htmlspecialchars($_POST['password'])."')");
         } catch (\Throwable $th) {
 
             // Error Catches
@@ -24,7 +24,7 @@
             exit;
         }
         if($result->num_rows > 0){
-
+            
             // Authentication Successful
             //header("Location: ../CreateNote/index.php");
             echo "<h3> Login Success</h3>";
