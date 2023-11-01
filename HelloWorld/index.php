@@ -532,6 +532,15 @@
 
         // public function CarDetails(){} - This Wont work because the method is final in parent Class Car
 
+        public function Sound(bool $PoPo){
+            if(!$PoPo){
+                echo "Camaro Roars Grr<br>";
+            }else{
+                echo "Meow meow<br>";
+            }
+        }
+    }
+
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
