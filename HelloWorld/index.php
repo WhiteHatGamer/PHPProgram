@@ -407,6 +407,29 @@
         }
     }
 
+    class SimpleClass{
+        // Class Variables or properties
+        public $num1 = 15;
+        public $num2 = 30;
+        public $var1 = <<<EOD
+        Hello World!
+        EOD;
+
+        // Without Visibility Modifier
+        static $var2;
+        readonly int $var3;
+
+        public function DisplayDetails(){
+            echo "Variables: ".$this->num1.", ".$this->num2."<br>";
+        }
+
+        // Test Null Validation Operator
+        public function getClass(){
+            return (new SimpleClass);
+        }
+        use Details;
+    }
+    
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
     
