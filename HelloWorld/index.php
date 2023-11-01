@@ -26,8 +26,8 @@
      * NULL
      * resource?
      */
-    $str1 = "Char";
-    $str2 = "string";
+
+    // Numbers and operations
     $num1 = 4;
     $float1 = 27.65;
     $bool4 = true;
