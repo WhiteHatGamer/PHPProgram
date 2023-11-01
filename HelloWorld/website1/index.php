@@ -304,4 +304,9 @@
                 $fruits[$fruitArray[$key]] = $fruits[$key];
                 unset($fruits[$key]);
             }
+            echo "<h3>JSON Encoding and Decoding</h3>";
+            $jsonString = json_encode($fruits);
+            echo $jsonString."<br>";
+
+            echo "<br>";
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
