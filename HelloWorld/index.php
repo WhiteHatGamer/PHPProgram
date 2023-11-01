@@ -623,6 +623,12 @@
     $Days = ceil(($Bd-time())/60/60/24);
     echo "$Days days Until Bday<br>";
 
+    // TITLE: Global Variable
+    echo "<h3>Global Variables</h3><br>";
+    
+    echo "Super \$GLOBALS Variable<br>";
+    echo "\$GLOBALS['num1'] is ".$GLOBALS['num1']."<br>";
+
     /*foreach ($_SERVER as $key) {
         echo $key;
         echo "<br>";
