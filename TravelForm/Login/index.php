@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    // Checking If User is Logged In
+    if(isset($_SESSION['email'])){
+        sleep(1);
+        header('Location: ../Dashboard/index.php');
+    }
+
     if(isset($_POST['submit'])){
 
         // Including Env Variables with Credentials
@@ -28,7 +36,7 @@
             echo "<br>";
 
             // Starting Session
-            session_start();
+            @session_start(); // Already Started Session.
             $_SESSION['email'] = htmlspecialchars($_POST['email']);
             echo('<a href="../Dashboard/index.php">Dashboard</a>');
             exit;
