@@ -506,6 +506,10 @@
             $this->make  = $make;
         }
         
+        final public function CarDetails(){
+            echo "The Car is $this->year $this->make $this->model of $this->color Color<br>";
+        }
+
         // Abstract Method Definition
         public function sound(bool $PoPo){
             echo "Cars Sounds Brr<br>";
