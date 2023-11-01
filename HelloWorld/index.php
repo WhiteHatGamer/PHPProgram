@@ -430,6 +430,20 @@
         use Details;
     }
     
+    // Inheritance
+    class myObject extends SimpleClass{
+        function WhatsThis(){
+            echo "Child of &lt;SimpleClass&gt;<br>";
+            $this->DisplayDetails();
+        }
+        
+        function DisplayDetails(){
+            echo "Extended Display Details => ";
+            parent::DisplayDetails();
+        }
+    }
+    
+    
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
     
