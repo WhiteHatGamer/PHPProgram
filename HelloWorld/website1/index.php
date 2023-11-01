@@ -162,6 +162,16 @@
                 $PrepareAddDetails = $Mysqli->prepare("INSERT INTO form(name,email,age,gender,website,comment) VALUES(?,?,?,?,?,?)");
                 $PrepareAddDetails->bind_param("ssisss", $name, $email, $age, $genderEnum, $website, $comment);
                 // try{
+                    if($PrepareAddDetails->execute()==true){
+                        $lastId = $Mysqli->insert_id;
+                        echo "Details Stored In Database with id: $lastId<br>";
+                    }else{
+                        echo "Error Creating Table: ".$Mysqli->error;
+                    }
+                // }catch(exception $e){
+                //     echo "Error Inserting Value=> {$e->getMessage()}";
+                // }
+
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
