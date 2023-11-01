@@ -188,6 +188,7 @@
 
     $concat = $str1 . $str2;
     $alsoConcat = "$str1 $str2"; // same as $concat
+    $str1 .= $str2; // Same as  $str1 = $Str1.$Str2;
 
     // Array Operations - + == === != <> !==
 
@@ -218,14 +219,19 @@
     $a = new MyClass;
     $b = new ChildClass;
 
+    echo "MyClass(MyInterface)->ChildClass and NotMyClass<br>MyClass(\$a), ChildClass(\$b)<br>";
     echo " \$a Instance of MyClass: ";
     var_dump($a instanceof MyClass);
     echo "<br> \$a instance of NotMyClass: ";
     var_dump($a instanceof NotMyClass);
-    echo "<br> \$b instance of MyClass: ";
-    var_dump($b instanceof MyClass);
     echo "<br> \$a instance of MyInterface: ";
     var_dump($a instanceof MyInterface);
+    echo "<br> \$a instance of ChildClass: ";
+    var_dump($a instanceof ChildClass);
+    echo "<br> \$b instance of MyClass: ";
+    var_dump($b instanceof MyClass);
+    echo "<br> \$b instance of MyInterface: ";
+    var_dump($b instanceof MyInterface);
     echo "<br>";
 
     // TITLE: Control Structures
