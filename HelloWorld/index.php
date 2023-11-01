@@ -31,6 +31,9 @@
     $num1 = 4;
     $float1 = 27.65;
     $bool4 = true;
+
+    // Type Casting
+    $num2 = (int)$float1;
     
     $sum = $num1 + $float1;
     
