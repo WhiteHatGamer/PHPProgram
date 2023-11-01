@@ -37,3 +37,5 @@ DUMP/
 
 # .gitignore Extension
 /TravelForm/notes.txt
+/HelloWorld/website1/Uploads
+/HelloWorld/vars.php
