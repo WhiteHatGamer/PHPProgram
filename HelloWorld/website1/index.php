@@ -172,6 +172,31 @@
                 //     echo "Error Inserting Value=> {$e->getMessage()}";
                 // }
 
+                $table = $Mysqli->query("SELECT * from form LIMIT 15 ORDER BY id DESC");
+                
+                // Listing Every Row in the Database with Filtering as Table
+                if($table->num_rows > 1){
+                    ?>
+                    <table border="1">
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    <?php
+                    while($row = $table->fetch_assoc()){
+                        echo "<tr>";
+                        foreach($row as $key => $value){
+                            if(!preg_match("/id|name|email/i", $key)){
+                                continue;
+                            }
+                            echo "<td>$value</td>";
+                        }
+                        echo "</tr>";
+                    }
+                }else{
+                    echo "0 Data in Database<br>";
+                }
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
