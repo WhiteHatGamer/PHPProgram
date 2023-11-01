@@ -182,4 +182,16 @@
             <input type="file" name="fileUpload" id="fileUpload">
             <button type="submit" name="fSubmit">Upload</button>
         </form>
+        <h3>Cookies</h3>
+        <h5><?php 
+
+        if(isset($_COOKIE[$CookieName])){
+            echo "Welcome Back: ".$_COOKIE[$CookieName]."<br>";
+        }else{
+            echo "Cookie Not Set<br>";
+        }
+        foreach($_SESSION as $key => $value){
+            echo "$key => $value<br>";
+        }
+
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
