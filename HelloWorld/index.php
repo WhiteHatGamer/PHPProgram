@@ -473,6 +473,12 @@
             echo "Employee Constructed<br>";
         }
 
+        // Runs on the end of the file. which destructs the class object created using the 
+        function __destruct(){
+            //echo "<br>Destructing ".__CLASS__."<br>";
+        }
+        use Details;
+    }
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
