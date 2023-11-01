@@ -554,6 +554,35 @@
     // __NAMESPACE__    - If inside a namespace its name is returned
     // __TRAIT__        - Trait Name?Yeah Trait Name used to make some class inherits more functions
     // ClassName::Class - returns name of the specified class name and namespace if any
+    // OOP Creating Own Iterator
+    class HashMap implements Iterator{
+        public $values = [];
+        public $pointer = 0;
+
+        public function __construct(){
+            
+        }
+
+        public function current(){
+            return $this->values[$this->pointer];
+        }
+
+        public function next() : void{
+            $this->pointer++;
+        }
+
+        public function rewind() : void{
+            $this->pointer = 0;
+        }
+
+        public function key(){
+            return $this->pointer;
+        }
+
+        public function valid() : bool{
+            return $this->pointer < count($this->values);
+        }
+    }
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
