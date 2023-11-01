@@ -517,6 +517,21 @@
 
         use Details;
     }
+
+    // Final Class Wont let to make any CHild Class of This Class
+    final class Camaro extends Cars{
+        const name = "Camaro";
+
+        public function __construct(){
+            parent::__construct("Chevrolet", "Camaro", 2014, "Yellow");
+        }
+
+        public function Call(){
+            echo self::name." Coming with Style<br>";
+        }
+
+        // public function CarDetails(){} - This Wont work because the method is final in parent Class Car
+
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
