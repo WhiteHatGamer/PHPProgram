@@ -544,6 +544,10 @@
         }
     }
 
+    $cars[0] = new Cars("Chevrolet", "Camaro", 2014, "Yellow");
+    $cars[0]->CarDetails();
+    $cars[0]->sound(true);
+    
     // Dunder/Magic Constants
     // __CLASS__        - returns Class name
     // __DIR__          - Returns File Directory
@@ -554,6 +558,15 @@
     // __NAMESPACE__    - If inside a namespace its name is returned
     // __TRAIT__        - Trait Name?Yeah Trait Name used to make some class inherits more functions
     // ClassName::Class - returns name of the specified class name and namespace if any
+    
+    $camaro[0] = new Camaro();
+    $camaro[0]->Call();
+    $camaro[0]->sound(false);
+    $camaro[0]->sound(true);
+
+    // Namespace
+    // namespace html; // This can only be at the start of the file.
+
     // OOP Creating Own Iterator
     class HashMap implements Iterator{
         public $values = [];
@@ -590,16 +603,25 @@
     // Setting Timezone
     date_default_timezone_set('Asia/Kolkata');
     echo date('H:i:s l d/m/Y');
-
+    
+    // Creating own Time with Date
     $timestamp = mktime(15,37,16,10,10,23);
     echo "<br>";
     echo (date('H:i:s l d/m/Y', $timestamp));
 
+    // PHP Lets us convert almost any English sentence string to time
     $timestamp2 = strtotime("15th October 2023 13:05");
     echo "<br>";
     echo (date('H:i:s l d/m/Y', $timestamp2));
 
-    // TITLE: Global Variable $_SERVER
+    echo "<br>Saturdays upto 6 weeks: <br>";
+    for ($startTime = strtotime("saturday"), $endTime = strtotime("+6weeks", $startTime); $startTime < $endTime; $startTime = strtotime("+1week", $startTime)) { 
+        echo date("M d", $startTime)."<br>";
+    }
+
+    $Bd = strtotime("next year 12th aug");
+    $Days = ceil(($Bd-time())/60/60/24);
+    echo "$Days days Until Bday<br>";
 
     /*foreach ($_SERVER as $key) {
         echo $key;
