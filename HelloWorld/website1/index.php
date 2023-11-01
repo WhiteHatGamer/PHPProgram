@@ -203,6 +203,14 @@
                     echo "Data Deleted Where Age was wrong<br>";
                 }
 
+                // Update Data With Condition
+                if($Mysqli->query(
+                    "UPDATE form
+                    SET email='7025250093'
+                    WHERE id=4")){
+                    echo "Database Updated<br>";
+                }
+            }
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
