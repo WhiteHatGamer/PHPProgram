@@ -294,4 +294,14 @@
                 return strlen($element);
             }
 
+            echo "<h3>Array Mapping</h3>";
+            $fruitArray = ['Apple','Banana','Cocoa'];
+            $fruits = array_map("filterStringLength", $fruitArray);
+            print_r($fruitArray);
+            echo "<br>Mapping String Lengths<br>";
+            print_r($fruits);
+            foreach($fruits as $key=>$value){
+                $fruits[$fruitArray[$key]] = $fruits[$key];
+                unset($fruits[$key]);
+            }
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
