@@ -1,6 +1,6 @@
 <?php
 
-    include __DIR__."/website1/inc/header.php";
+    include __DIR__."/website1/inc/header.php"
     // Single Line COmment
     # Same in Python too?
     /*
@@ -94,7 +94,7 @@
      * Foreach
      */
 
-    echo "###For Loop###<br>";
+    echo "For Loop<br>";
     for($i = 0;$i < 10;$i++){
         echo "Number".$i;
         echo"<br>";
