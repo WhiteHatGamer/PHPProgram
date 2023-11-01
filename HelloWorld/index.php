@@ -397,6 +397,16 @@
 
     $greet("World");
     $greet("PHP");
+
+    // TITLE: Classes and Objects OOP
+    echo "<h3>Classes and Objects</h3><br>";
+
+    trait Details{
+        public function ClassDetails(){
+            echo "<h5>Class&lt;".__CLASS__."&gt;</h5>";
+        }
+    }
+
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
     
