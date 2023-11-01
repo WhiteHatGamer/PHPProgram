@@ -544,6 +544,16 @@
         }
     }
 
+    // Dunder/Magic Constants
+    // __CLASS__        - returns Class name
+    // __DIR__          - Returns File Directory
+    // __FILE__         - returns File Name Including Full Path
+    // __FUNCTION__     - returns the current Function name
+    // __LINE__         - Current Line Number
+    // __METHOD__       - If a method of class Class name and method is returned
+    // __NAMESPACE__    - If inside a namespace its name is returned
+    // __TRAIT__        - Trait Name?Yeah Trait Name used to make some class inherits more functions
+    // ClassName::Class - returns name of the specified class name and namespace if any
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
