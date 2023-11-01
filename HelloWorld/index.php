@@ -340,7 +340,7 @@
     echo "After addTen $num1 <br>";
 
     // functions with variable
-    echo "###Variable Arguments###<br>";
+    echo "Variable Arguments<br>";
     function VarDisplayFunction(...$numbers){
         foreach ($numbers as $key) {
             echo $key;
@@ -348,6 +348,27 @@
     }
     VarDisplayFunction('a','e','i','o','u');
     echo "<br>";
+
+    // Function Variable and Method
+    class MyClassWithMethod{
+        function myClassFunction($arg){
+            echo "Inside MyFunction and The Argument is $arg<br>";
+            $myMethodName = 'myMethod';
+            $this->$myMethodName();
+        }
+
+        static function myMethod(){
+            echo "class &lt;MyClassWithMethod&gt;<br>";
+        }
+    }
+
+    $myClassVar = new MyClassWithMethod;
+    $myClassVar->myClassFunction('ARGUMENT');
+
+    // Can only run if static
+    $ClassMethodVariable = "MyClassWithMethod::myMethod";
+    $ClassMethodVariable();
+
 
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
