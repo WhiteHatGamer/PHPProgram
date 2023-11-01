@@ -11,7 +11,7 @@
         //header('Location: Dashboard/index.php');
     }
     setcookie($CookieName, $CookieValue, time() + (86400*30),'/');
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
