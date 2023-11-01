@@ -1,4 +1,6 @@
 <?php
+
+    include __DIR__."/website1/inc/header.php";
     // Single Line COmment
     # Same in Python too?
     /*
