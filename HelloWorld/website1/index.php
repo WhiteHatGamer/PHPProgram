@@ -145,6 +145,17 @@
             <textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea><br>
             <button type="submit">Submit</button>
         </form>
+        <?php
+            if($enterFlag){
+                print_r($_POST);
+                echo "<br>";
+                // Printing Entered Details
+                echo "<h3>Details Entered: </h3>";
+                echo "$name<br>";
+                echo "$email<br>";
+                echo "$website<br>";
+                echo "$gender<br>";
+                echo "$comment<br>";
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
