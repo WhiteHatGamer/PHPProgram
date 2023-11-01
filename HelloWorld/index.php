@@ -673,8 +673,8 @@
 ?>
 <html>
     <body>
-        <br>
         <h2>
-        <a href="/HelloWorld/website1/index.php">My Website</a>
+            <a href="/HelloWorld/website1/index.php">Form</a>
+        </h2>
     </body> 
 </html>
