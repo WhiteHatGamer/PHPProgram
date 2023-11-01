@@ -369,7 +369,19 @@
     $ClassMethodVariable = "MyClassWithMethod::myMethod";
     $ClassMethodVariable();
 
+    // Functions With return reference
+    function &ReturnReference(){
+        // can access global variable s using global keyword
+        global $num1;
+        echo "global variable accessed $num1<br>";
+        $someRef = &$num1;
+        return $someRef;
+    }
 
+    $newRef =& ReturnReference();
+    echo "Got Num1: $num1 Reference: $newRef <br>";
+    $newRef += 5;
+    echo "After addition Num1: $num1 Reference: $newRef <br>";
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
     
