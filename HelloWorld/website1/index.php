@@ -148,4 +148,33 @@
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
+
+            // File Handling
+            echo "<h3>File Handling</h3>";
+            // Read Operation
+            // echo readfile("webDict.txt");  // Returns the file contents of the file
+            $fileH = fopen("webDict.txt", 'r') or die("Unable to Open File");
+            // Printing the contents of the file each by line
+            while(!feof($fileH)){
+                echo fgets($fileH);
+                echo "<br>";
+            }
+            // echo fread($fileH, filesize("webDict.txt")); // Read Complete File Upto size of the file stream
+            fclose($fileH);
+
+            // Write operation - w
+            $fileH = fopen("webDict.txt",'w') or die("Unable to open File");
+            $http = "HTTP - Hyper Text Transfer Protocol\n";
+            fwrite($fileH, $http);
+            fclose($fileH);
+
+            // Append Mode - a
+            $fileH = fopen("webDict.txt", 'a') or die("Unable to open File");
+            $FTP = "FTP - File Transfer Protocol\n";
+            fwrite($fileH, $FTP);
+            fclose($fileH);
+
+            // File uploading
+            echo "File upload Form";
+        ?>
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
