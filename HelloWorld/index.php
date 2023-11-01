@@ -633,9 +633,18 @@
         echo $key;
         echo "<br>";
     }*/
-    echo '<br>';
-    echo $_SERVER['HTTP_USER_AGENT'];
-    echo "<br>";
+
+    // $_SERVER Contain everything related to the connection and network stats
+    echo '$_SERVER<br>';
+    echo '$_SERVER[\'PHP_SELF\']: '.$_SERVER['PHP_SELF']."<br>";
+    echo '$_SERVER[\'SERVER_NAME\']: '.$_SERVER['SERVER_NAME']."<br>";
+    echo '$_SERVER[\'HTTP_HOST\']: '.$_SERVER['HTTP_HOST']."<br>";
+    echo '$_SERVER[\'HTTP_REFERER\']: '.@$_SERVER['HTTP_REFERER']."<br>";
+    echo '$_SERVER[\'HTTP_USER_AGENT\']: '.$_SERVER['HTTP_USER_AGENT']."<br>";
+    echo '$_SERVER[\'SCRIPT_NAME\']: '.$_SERVER['SCRIPT_NAME']."<br>";
+    echo '$_SERVER[\'SERVER_SOFTWARE\']: '.$_SERVER['SERVER_SOFTWARE']."<br>";
+    echo '$_SERVER[\'REQUEST_METHOD\']: '.$_SERVER['REQUEST_METHOD']."<br>";
+
     if(str_contains($_SERVER['HTTP_USER_AGENT'], 'Chrome')){
         echo "You are using Chrome";
     }else{
