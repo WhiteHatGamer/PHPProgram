@@ -463,6 +463,16 @@
         
         const COMPANY = "Smart Travels LLC";
 
+        // Constructor of Classes __construct
+        public function __construct(int $id, string $name, string $bio){
+            $this->id = $id;
+            $this->name = $name;
+
+            // Readonly properties of the class can only initialize using constructor and not outside class even if its not initialized
+            $this->bio = $bio;
+            echo "Employee Constructed<br>";
+        }
+
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
