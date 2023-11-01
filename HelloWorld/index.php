@@ -37,6 +37,23 @@
     
     $sum = $num1 + $float1;
     
+    // Strings and Operations
+    $str1 = "Char";
+    $str2 = "string";
+    $hello = "Hello World!";
+
+    $length = strlen($str2);
+    echo "len = $length <br>";
+    $words = str_word_count($hello);
+    echo "words = $words <br>";
+    $reverse = strrev($str1);
+    echo "rev = $reverse <br>";
+    $find = strpos($hello, "o World");
+    echo "find = $find <br>";
+    $replace = str_replace("World","PHP", $hello);
+    echo "replace = $replace <br>";
+
+    
     $Quotes = "he said \"hello\" ";
     
     define("MY_NAME", "WhiteHatGamer");
