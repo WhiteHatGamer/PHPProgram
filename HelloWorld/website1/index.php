@@ -260,4 +260,38 @@
             echo "$key => $value<br>";
         }
 
+        // If we used session_destroy without session_unset data. The session data remains in the variable.
+        session_unset();
+        session_destroy();
+        echo "<h3>Filter variables</h3>";
+        ?></h5>
+        <table border="3px">
+            <tr>
+                <th>Filter id</th>
+                <th>Filter Name</th>
+            </tr>
+            <?php
+                foreach(filter_list() as $id => $name){
+                    echo "<tr><td>$id</td><td>$name</td></tr>";
+                }
+            ?>
+        </table>
+        <?php
+            $ip = $_SERVER['REMOTE_ADDR'];
+            if(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)){
+                echo "IP Valid(IPV4)-> $ip<br>";
+            }elseif(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)){
+                echo "IP Valid(IPV6)-> $ip<br>";
+            }else{
+                echo "IP Not Valid<br>";
+            }
+            if(filter_var($age, FILTER_VALIDATE_INT, array("options"=>array("min_range"=>0,"max_range"=>110))) == true){
+                echo "age is withing range: $age<br>";
+            }else{
+                echo "age Error: $age";
+            }
+            function filterStringLength($element){
+                return strlen($element);
+            }
+
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
