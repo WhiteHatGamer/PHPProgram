@@ -83,6 +83,7 @@
     echo"<br>";
 
     # TITLE: Loops
+    echo "<h3>Loops</h3><br>";
     /**
      * For
      * While
@@ -136,7 +137,11 @@
         echo '<br>';
     }
 
-    # TITLE: operators
+    // TITLE: operators
+    echo "<h3>Operators</h3><br>";
+
+    // Arithmetic Operators
+        // +, -, *, /, %, **
 
     // Ternary Operator
 
@@ -207,7 +212,8 @@
     echo "<br>";
 
     // TITLE: Control Structures
-    
+    echo "<h3>Control Structures</h3><br>";
+
     $num1 = 14;
 
     // IF conditional value ==, >, < ,!= 
@@ -274,6 +280,7 @@
     // declare (Encoding = 'ISO-8859-1');
 
     // TITLE: Function Definition
+    echo "<h3>Functions</h3><br>";
     function myFunction(){
         echo "Inside Function<br>";
     }
@@ -320,7 +327,9 @@
     echo "<br>";
 
     // TITLE: Date and Time
-
+    echo "<h3>Date And Time</h3><br>";
+    
+    // Setting Timezone
     date_default_timezone_set('Asia/Kolkata');
     echo date('H:i:s l d/m/Y');
 
