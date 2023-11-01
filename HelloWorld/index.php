@@ -653,6 +653,23 @@
     }
 
     echo '$_REQUEST[\'var\']<br>$_POST[\'var\']<br>$_GET[\'var\']<br>';
+
+    // TITLE: RegEx
+        // Modifiers
+            // i - Case Insensitive
+            // m - multi line search
+            // u - encoding with UTF-8
+    echo "<h3>Regular Expressions</h3><br>";
+    $str = "Hello World!";
+    $email = "abc@example.com";
+    $alphabets = "abcdefghijklmnopqrstuvwxyz";
+    $pattern = "/World/i";
+    echo "$pattern in $str => ".preg_match($pattern, $str)."<br>";
+    echo "/o/i in $str => ".preg_match_all('/o/i', $str)."<br>";
+    echo "replacing $pattern from $str with PHP => ".preg_replace($pattern, 'PHP', $str)."<br>";
+    echo "Checking if email using filter_var => ".filter_var($email, FILTER_VALIDATE_EMAIL)."<br>";
+
+
 ?>
 <html>
     <body>
