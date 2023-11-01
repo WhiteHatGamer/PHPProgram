@@ -177,4 +177,9 @@
             // File uploading
             echo "File upload Form";
         ?>
+        <form action="upload.php" method="post", enctype="multipart/form-data">
+            Select Image:
+            <input type="file" name="fileUpload" id="fileUpload">
+            <button type="submit" name="fSubmit">Upload</button>
+        </form>
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
