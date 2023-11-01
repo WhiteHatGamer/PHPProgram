@@ -514,6 +514,9 @@
         public function sound(bool $PoPo){
             echo "Cars Sounds Brr<br>";
         }
+
+        use Details;
+    }
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
