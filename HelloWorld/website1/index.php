@@ -48,4 +48,72 @@
             }catch(Exception $e){
                 echo "Error Creating Table=> {$e->getMessage()}<br>";
             }
+            // FORM Validation
+            $enterFlag = true;
+            $nameErr = $emailErr = $websiteErr = $genderErr = "";
+            $name = $email = $comment = $website = $gender = "";
+            $age = null;
+            $urlProtocolPattern = '/https|ftp|http|smtp|tcp/i';
+            // Checking if entered Details
+            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                if(empty($_POST['name'])){
+                    $nameErr = "Name is Required";
+                    $enterFlag = false;
+                    
+                }else{
+                    $nameBuffer = htmlspecialchars($_POST['name']);
+                    // Checking if name is of Correct Format
+                    if(preg_match("/^[a-zA-Z-' ]*$/", $nameBuffer)){
+                        $name = $nameBuffer;
+                        $_SESSION['name'] = $name;
+                        $CookieValue = @str_replace(" ", "_", $name);//$name;
+                        setrawcookie($CookieName,$CookieValue, time()+(86400),'/');
+                    }else{
+                        $nameErr = "Only Letters, WhiteSpaces, apostrophe and dash is allowed";
+                    }
+                }
+                if(empty($_POST['email'])){
+                    $enterFlag = false;
+                    $emailErr = "Email is Required";
+                }else{
+                    $emailBuffer = htmlspecialchars($_POST['email']);
+                    // Validating Email Format
+                    if(filter_var($emailBuffer, FILTER_VALIDATE_EMAIL)){
+                        $email = $emailBuffer;
+                        $_SESSION['email'] = $email;
+                    }else{
+                        $emailErr = "Enter Valid Email";
+                    }
+                }
+                if(!empty($_POST['comment'])){
+                    $comment = htmlspecialchars($_POST['comment']);
+                }
+                if(!empty($_POST['website'])){
+                    $websiteBuffer = htmlspecialchars($_POST['website']);
+                    // Website Pattern Checking
+                    if(preg_match($urlProtocolPattern,$websiteBuffer)){
+                        if(filter_var($websiteBuffer,FILTER_VALIDATE_URL)){
+                            $website = $websiteBuffer;
+                            $websiteErr = '';
+                        }else{
+                            $websiteErr = $websiteBuffer.' is Not a Valid URL';
+                        }
+                    }else{
+                        $websiteErr = 'Please Specific protocol Details eg: http:// , https://, etc.';
+                    }
+                }
+                if(empty($_POST['gender'])){
+                    $genderErr = "Gender is Required";
+                    $enterFlag = false;
+                }else{
+                    $gender =htmlspecialchars($_POST['gender']);
+                    $_SESSION['gender'] = $gender;
+                }
+                if(!empty($_POST['age'])){
+                    $age = htmlspecialchars($_POST['age']);
+                }
+            }else{
+                $enterFlag = false;
+            }
+        ?>
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
