@@ -116,4 +116,33 @@
                 $enterFlag = false;
             }
         ?>
+        <span class="error"><p>* Required Field</p></span>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" name="submit" method="post">
+            <label for="prefix">Prefix: </label>
+            <select name="prefix">
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Adv.">Adv.</option>
+            </select><br>
+            <label for="name">Name: </label>
+            <input type="text" name="name" value="<?php echo $name; ?>" autofocus><span class="error">*<?php echo $nameErr; ?></span><br>
+            <label for="email">Email: </label>
+            <input type="text" name="email" value="<?php echo $email; ?>"><span class="error">*<?php echo $emailErr; ?></span><br>
+            <label for="website">Website: </label>
+            <input type="text" name="website"  value="<?php echo $website; ?>"><span class="error"><?php echo $websiteErr; ?></span><br>
+            Gender: 
+            <input type="radio" name="gender" value="male"  <?php if(isset($gender) && $gender=="male"){echo "checked";}; ?>>Male
+            <input type="radio" name="gender" value="female" <?php if(isset($gender) && $gender=="female"){echo "checked";}; ?>>Female
+            <input type="radio" name="gender" value="Other" <?php if(isset($gender) && $gender=="other"){echo "checked";}; ?>>Other
+            <span class="error">*<?php echo $genderErr; ?></span>
+            <br>
+            <label for="age">Age(0-110): </label>
+            <input type="range" min="1" max="110" name='age' id='age' onchange="ageV.value=this.value">
+            <input type="number" name="ageV" id="ageV" max="110" onchange="age.value=this.value"></output><br>
+            <label for="comment">Comment</label>
+            <textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
