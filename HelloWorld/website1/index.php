@@ -156,6 +156,12 @@
                 echo "$website<br>";
                 echo "$gender<br>";
                 echo "$comment<br>";
+                $genderEnum = $gender=='male'? 'm' : (($gender=='female')? 'f' : 'o');
+
+                // Template Like in SQL
+                $PrepareAddDetails = $Mysqli->prepare("INSERT INTO form(name,email,age,gender,website,comment) VALUES(?,?,?,?,?,?)");
+                $PrepareAddDetails->bind_param("ssisss", $name, $email, $age, $genderEnum, $website, $comment);
+                // try{
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
