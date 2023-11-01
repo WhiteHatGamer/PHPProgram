@@ -145,4 +145,7 @@
             <textarea name="comment" rows="5" cols="40"><?php echo $comment; ?></textarea><br>
             <button type="submit">Submit</button>
         </form>
+            // Included Var
+            echo "<br>";
+            echo "I have a $color $car<br>";
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
