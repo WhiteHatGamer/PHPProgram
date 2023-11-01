@@ -454,6 +454,9 @@
     $TestExt->ClassDetails();
 
     
+    // Checks if testExt exists and then if getClass exists then returns its num1. If any of these not exist then returns NULL
+    $result = $TestExt?->getClass()?->num1;
+    
     class Employee{
         // Typed Variables
         public int $id;
