@@ -53,7 +53,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login | Travel Notes</title>
+        <title>Login | Travel Planner</title>
     </head>
     <body>
         <h1>Login</h1><br>
