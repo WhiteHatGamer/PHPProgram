@@ -108,7 +108,7 @@
         echo mt_rand(000000,999999)."<br>";
     }
 
-    echo "###While Loop###<br>";
+    echo "While Loop<br>";
     $i = 0;
     while ($i <= 10) {
         echo $i;
@@ -116,7 +116,7 @@
         $i++;
     }
 
-    echo "###Do-While Loop###<br>";
+    echo "Do-While Loop><br>";
     $i=0;
     do {
         echo $i;
@@ -124,14 +124,14 @@
         $i++;
     } while ($i <= 10);
 
-    echo "###For Each###<br>";
+    echo "For Each<br>";
     $people = [1,2,3,4,5,6,7,8,9,0];
     foreach ($people as $i) {
         echo $i;
         echo "<br>";
     }
 
-    echo "###Foreach with Key and value###<br>";
+    echo "Foreach with Key and value<br>";
     $HexAssociative = [10=>'a',11=>'b',12=>'c',13=>'d',14=>'e',15=>'f']; 
     foreach($HexAssociative as $k => $i){
         echo $k.": ".$i;
