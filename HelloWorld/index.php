@@ -479,6 +479,16 @@
         }
         use Details;
     }
+    // can also utilize $this to make function - Setter and getter
+
+    // Access Modifiers - 
+        // public 
+        // private
+        // protected
+    
+    $employee1 = new Employee(1,"Anear","Hello My name is");
+    $employee1->ClassDetails();
+
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
