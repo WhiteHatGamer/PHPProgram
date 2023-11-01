@@ -14,5 +14,19 @@
     setcookie($CookieName, $CookieValue, time()+(86400*30),'/');
 ?>
     <h1>Home</h1>
-    <h2>Header 2</h2>
+    <style>
+    .error {color: #FF0000;}
+    </style>
+    <body>
+        <h3>FORM With Validation</h3>
+        <?php
+            // MYSQLi Connections:
+            try{
+                $Mysqli->query("CREATE DATABASE test");
+            }catch(Exception $th){
+                echo "Error Creating Database=> {$th->getMessage()}<br>";
+            }
+            if($Mysqli->select_db($Database)==true){
+                echo "Database Changed to $Database<br>";
+            }
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
