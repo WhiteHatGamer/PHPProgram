@@ -138,6 +138,22 @@
         echo '<br>';
     }
 
+    // TITLE: Math Functions
+    min($numbers);  // Returns Smallest
+    max($numbers);  // Returns Largest
+    abs(-56.564);   // returns absolute Value = 56.564
+    sqrt(4);        // returns Square root = 16
+    round(564.554); // rounds to nearest = 565
+    rand();          // Generates any random number
+    rand(0,100);     // Generated Random within range of 0-100
+
+    // CONSTANTS
+    echo "Constants<br>";
+    define ("PI", 3.1417);
+    const MY_PHONE = "OPPO A78";
+    echo "PI Value is ".PI."<br>"; // Don't need $
+    echo "My Phone is ".MY_PHONE."<br>";
+
     // TITLE: operators
     echo "<h3>Operators</h3><br>";
 
