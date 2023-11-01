@@ -1,12 +1,17 @@
 <?php
     session_start();
-
+    $CookieName = $_SERVER['REMOTE_ADDR'];
+    $CookieValue = '';
+    
+    
     // Checking If User is Logged In
     if(isset($_SESSION['email'])){
-        sleep(2);
-        header('Location: Dashboard/index.php');
+        $CookieValue = $_SESSION['name'];
+        sleep(1);
+        //header('Location: Dashboard/index.php');
     }
-?>
+    setcookie($CookieName, $CookieValue, time() + (86400*30),'/');
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,6 +21,14 @@
         <title>Home | Travel Notes</title>
     </head>
     <body>
+    <?php
+        if(isset($_COOKIE[$CookieName])){
+            echo "Welcome Back ".$_COOKIE[$CookieName];
+        }else{
+            echo "Cookie is not Set";
+            print_r($_COOKIE);
+        }
+    ?>
         <?php include "inc/header.php";?>
         <h3>Home</h3>
         <a href="Register/index.php">Register</a>
