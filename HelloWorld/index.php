@@ -59,6 +59,7 @@
     define("MY_NAME", "WhiteHatGamer");
     
     // TITLE: ARRAYS
+    echo "<h3>Arrays</h3><br>";
     $numbers = array(0,1,2,3,4,5,6,7,8,9);
     
     echo $numbers[5];
