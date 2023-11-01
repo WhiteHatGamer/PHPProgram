@@ -246,13 +246,13 @@
         echo "num1 is not 14<br>";
     }
 
-    // If data type comparison === 
+    // If data type comparison === but also need to be same
     if($num1 === 'a'){
-        echo "\$num1 is String<br>";
-    }elseif ($num1 === 1) {
-        echo "\$num1 is Number <br>";
+        echo "\$num1 is 'a' and its String Type<br>";
+    }elseif ($num1 === 14) {
+        echo "\$num1 is 14 and its Number Type<br>";
     }else{
-        echo "num1 is of unknown type<br>";
+        echo "num1 is of unknown data and type<br>";
     }
 
     // Switch
