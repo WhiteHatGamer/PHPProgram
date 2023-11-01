@@ -29,4 +29,23 @@
             if($Mysqli->select_db($Database)==true){
                 echo "Database Changed to $Database<br>";
             }
+
+            // Creating Form Table:
+            try{
+                $QueryCreateTable = "CREATE TABLE form(
+                    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    name VARCHAR(25) NOT NULL,
+                    email VARCHAR(255) NOT NULL,
+                    age INT(3) UNSIGNED ,
+                    gender enum('m','f'),
+                    website VARCHAR(255),
+                    comment VARCHAR(1000),
+                    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                    )";
+                if($Mysqli->query($QueryCreateTable)){
+                    echo "Table Created<br>";
+                }
+            }catch(Exception $e){
+                echo "Error Creating Table=> {$e->getMessage()}<br>";
+            }
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
