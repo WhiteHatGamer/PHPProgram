@@ -1,3 +1,3 @@
 <footer>
-    <p>TravelNotes&copy; 2023</p>
+    <p>TravelPlanner&copy; 2023</p>
 </footer>
