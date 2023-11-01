@@ -645,12 +645,14 @@
     echo '$_SERVER[\'SERVER_SOFTWARE\']: '.$_SERVER['SERVER_SOFTWARE']."<br>";
     echo '$_SERVER[\'REQUEST_METHOD\']: '.$_SERVER['REQUEST_METHOD']."<br>";
 
+    // So that can use to validate versions and Some other maybe required to run our website or for Security Purposes
     if(str_contains($_SERVER['HTTP_USER_AGENT'], 'Chrome')){
-        echo "You are using Chrome";
+        echo "You are using Chrome<br>";
     }else{
-        echo "You are not using Chrome";
+        echo "You are not using Chrome<br>";
     }
 
+    echo '$_REQUEST[\'var\']<br>$_POST[\'var\']<br>$_GET[\'var\']<br>';
 ?>
 <html>
     <body>
