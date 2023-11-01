@@ -197,6 +197,12 @@
                 }else{
                     echo "0 Data in Database<br>";
                 }
+
+                // Delete Data Filtered
+                if($Mysqli->query("DELETE FROM form WHERE age=56")==true){
+                    echo "Data Deleted Where Age was wrong<br>";
+                }
+
             // Included Var
             echo "<br>";
             echo "I have a $color $car<br>";
