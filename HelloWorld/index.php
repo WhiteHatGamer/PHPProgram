@@ -489,6 +489,27 @@
     $employee1 = new Employee(1,"Anear","Hello My name is");
     $employee1->ClassDetails();
 
+    // Abstract Class forces the Child class to Define the Methods
+    abstract class Sound{
+        abstract public function sound(bool $PoPo);
+    }
+
+    class Cars extends Sound{
+        public $color;
+        public $model;
+        public $make;
+        public int $year;
+        public function __construct(string $make, string $model, int $year, string $color){
+            $this->color = $color;
+            $this->model = $model;
+            $this->year  = $year;
+            $this->make  = $make;
+        }
+        
+        // Abstract Method Definition
+        public function sound(bool $PoPo){
+            echo "Cars Sounds Brr<br>";
+        }
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
