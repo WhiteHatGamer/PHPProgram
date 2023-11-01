@@ -382,6 +382,21 @@
     echo "Got Num1: $num1 Reference: $newRef <br>";
     $newRef += 5;
     echo "After addition Num1: $num1 Reference: $newRef <br>";
+
+    // Function with return type
+    function ReturnRandomInt():int{
+        return rand();
+    }
+
+    echo "Random Function with int return type returned: ".ReturnRandomInt()."<br>";
+
+    // Anonymous Functions
+    $greet = function($name){
+        echo "Hello $name<br>";
+    };
+
+    $greet("World");
+    $greet("PHP");
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
     
