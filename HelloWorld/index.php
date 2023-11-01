@@ -443,6 +443,26 @@
         }
     }
     
+    $test = new SimpleClass;
+    $test->DisplayDetails();
+    $test->ClassDetails();
+    var_dump($test instanceof(new myObject));
+    echo "<br>";
+    
+    $TestExt = new myObject;
+    $TestExt->DisplayDetails();
+    $TestExt->ClassDetails();
+
+    
+    class Employee{
+        // Typed Variables
+        public int $id;
+        public ?string $name;
+
+        readonly string $bio;
+        
+        const COMPANY = "Smart Travels LLC";
+
     
     // TITLE: Date and Time
     echo "<h3>Date And Time</h3><br>";
