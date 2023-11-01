@@ -309,4 +309,30 @@
             echo $jsonString."<br>";
 
             echo "<br>";
+            try{
+                $jsonDecoded = json_decode($jsonString);
+                if(gettype($jsonDecoded) == 'object'){
+                    throw new Exception("Error Associative Not Considered", 1);
+                }
+            }catch(Exception $th){
+                //echo "Exception Captured: $th<br>";
+                $jsonDecoded = json_decode($jsonString,true);
+                try {
+                    // Passing Previous exception in the next new exception causes it to Print the stack trace of the Exception old to new
+                    throw new Exception("Error Processing Request", 1,$th);
+                } catch (Exception $ex) {
+                    echo "<h3>Exception Handling</h3>";
+                    echo "Exception Captured: <br>";
+                    echo "&ensp;Message: ".$ex->getMessage()."<br>";
+                    echo "&ensp;Previous: ".$ex->getPrevious()."<br>";
+                    echo "&ensp;Code: ".$ex->getCode()."<br>";
+                    echo "&ensp;File: ".$ex->getFile()."<br>";
+                    echo "&ensp;Line: ".$ex->getLine()."<br>";
+                }
+            }finally{
+                print_r($jsonDecoded);
+            }
+            ?>
+        <br>
+        <h3>Footer</h3>
 <?php include "/src/PHPProgram/HelloWorld/website1/inc/footer.php"?>
