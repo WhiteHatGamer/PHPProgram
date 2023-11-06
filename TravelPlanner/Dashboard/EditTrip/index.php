@@ -108,6 +108,23 @@
         echo "</tr></table></form>";
 
     }
+    
+    if(isset($_POST['confirm_delete'])){
+        try{
+
+            // Checking if id Exists for resubmission of Form
+            $result = $Mysqli->query("SELECT EXISTS(SELECT * FROM $JourneyTable WHERE id={$_POST['confirm_delete']})");
+
+            // If exists delete and Show Message
+            if($result->fetch_row()[0]!=0){
+                $Mysqli->query("DELETE FROM $JourneyTable WHERE id={$_POST['confirm_delete']}");
+                echo "<br>Delete Confirmed for id: {$_POST['confirm_delete']}<br>";
+            }
+        }catch(Exception $e){
+            echo "<br>Exception Occurred : {$e->getMessage()}<br>";
+        }
+
+    }
 
     // List Upcoming Journeys as Table
     echo "<h3>Edit Journeys</h3>";
