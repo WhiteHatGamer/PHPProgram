@@ -86,8 +86,8 @@
 </div>
 <br>
 <!-- Log out -->
-<form action="Password.php" method="post">
-    <button type="submit">Change Password</button>
+<form action="EditProfile/index.php" method="post">
+    <button type="submit">Edit Profile</button>
 </form>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <button name="logout" type="submit">Log Out</button>
