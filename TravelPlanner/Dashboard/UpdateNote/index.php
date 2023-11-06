@@ -48,19 +48,26 @@
 
     // Looping Through Result
     echo "<br><h5>Saved Notes:</h5><br>";
-    $count =1;
+    echo "<table border='1px'>";
+    echo "
+    <tr>
+        <th>ID No</th>
+        <th>Modified Time</th>
+        <th>Note</th>
+    </tr>";
     foreach ($result->fetch_all() as $key) {
-        echo "$count - &emsp;";
-        echo $key[2];
-        echo "<br>";
-        $_SESSION['TimeStamp'][$count-1] = $key[0];
-        $count++;
+        echo "<tr>
+            <td>".$key[3]."</td>
+            <td>".date("d/M H:i",strtotime($key[0]))."</td>
+            <td>".$key[2]."</td>
+        </tr>";
     }
+    echo "</table>";
 
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <label for="number">Sr. No &ensp;&ensp;&ensp;: </label>
-    <input type="number" name="number" required autofocus><br>
+    <label for="number">ID No &ensp;&ensp;&ensp;: </label>
+    <input type="number" name="number" required autofocus autocomplete="off"><br>
     <label for="edit">Edited Note:</label>
     <input type="text" name="edit"><br>
     <button type="submit" name="submit">Edit</button>
