@@ -24,6 +24,10 @@
     ?>
     <h3>Plan Journey</h3>
 
+    <!-- Conditional Radio Buttons -->
+    <input type="radio" name="trip" onclick="round.disabled = true" checked value="one_way">One Way
+    <input type="radio" name="trip" onclick="round.disabled = false" value="round_trip">Round Trip<br><br>
+
     <!-- Form Start -->
     <form method="post" name="plan" action=<?=$_SERVER['PHP_SELF']?>>
         <input type="text" name="source" id="source" placeholder="Type Source City" required list="id_list" onkeyup="getCity(this.value)" autocomplete="off">
