@@ -43,4 +43,18 @@ $city = [
     'Umm Al Quwain'=>60
 ];
 
+// get query
+$q = $_REQUEST['q'];
+
+// menu search on query
+switch ($q) {
+    case 'time':
+        exit;
+    
+    case 'searchCity':
+        exit;
+    default:
+        # code...
+        exit;
+}
 ?>
