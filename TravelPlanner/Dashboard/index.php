@@ -37,16 +37,20 @@
     @setcookie($CookieName, $CookieValue, time() + (86400*30),'/');
 ?>
 
-    <!-- Adding Name in Title -->
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Dashboard | <?php echo htmlspecialchars($_SESSION['name'])?></title>
-        </head>
-    </html>
+<!-- Adding Name in Title -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard | <?php echo htmlspecialchars($_SESSION['name'])?></title>
+    </head>
+</html>
 
+<?php
+    include __DIR__."/../inc/header.php";
+    echo "<h3>Hello ".@$_SESSION['name']."</h1>";
+?>
 <div id="tabs">
     <button onclick="travel.hidden=false, stay.hidden=true, note.hidden = true">Travel Plan</button>
     <button onclick="travel.hidden=true, stay.hidden=false, note.hidden = true">Hotel Stay</button>
