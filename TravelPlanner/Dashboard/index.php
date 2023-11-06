@@ -9,9 +9,6 @@
     session_start();
     
     if(isset($_POST['logout'])){
-        // UnSetting Cookie
-        $CookieValue = '';
-        setcookie($CookieName, $CookieValue, time() - 3600,'/');
         session_unset();
         session_destroy();
         header("Location: ../index.php");
