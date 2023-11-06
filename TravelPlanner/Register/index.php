@@ -9,16 +9,8 @@
         <h1>Registration Form</h1>
         <h3>Enter Details:</h3>
         <form action="action.php" method="post">
-            <label for="image">Picture: </label>
-            <input name="image" type="file"><br>
             <label for="name">Name: </label>
             <input name="name" type="text" autofocus><br>
-            <label for="gender">Gender: </label>
-            <input name="gender" type="radio">Male<input name="gender" type="radio">Female<br>
-            <label for="contact">Number: </label>
-            <input name="contact" type="tel"><br>
-            <label for="dob">Date of Birth: </label>
-            <input name="dob" type="date"><br>
             <label for='email'>Email*: </label>
             <input name='email' id='email' type="email" required><br>
             <label for='password'>Password*: </label>
