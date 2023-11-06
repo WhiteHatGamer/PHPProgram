@@ -66,6 +66,27 @@
             QueryExecuteUpdate("prefix", "'{$_POST['prefix']}'");
             $Prefix = QueryExecuteSelect("prefix");
         }
+        if($_POST['name']){
+            // Executing Update and Fetch
+            QueryExecuteUpdate("name", "'{$_POST['name']}'");
+            $Name = QueryExecuteSelect("name");
+        }
+        if($_POST['number']){
+            // Executing Update and Fetch
+            $value = str_replace(' ','',$_POST['number']);
+            QueryExecuteUpdate("number", "'$value'");
+            $Number = QueryExecuteSelect("number");
+        }
+        if($_POST['gender']){
+            // Executing Update and Fetch
+            QueryExecuteUpdate("gender", "'{$_POST['gender']}'");
+            $Gender = QueryExecuteSelect("gender");
+        }
+        if($_POST['dob']){
+            // Executing Update and Fetch
+            QueryExecuteUpdate("dob", "'{$_POST['dob']}'");
+            $DOB = QueryExecuteSelect("dob");
+        }
     }
 ?>
 <!DOCTYPE html>
