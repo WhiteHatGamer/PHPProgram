@@ -29,17 +29,23 @@
 
     // Checking if Submitted Already
     if(isset($_POST['submit'])){
-        $Time = $_SESSION['TimeStamp'][$_POST['number']-1] ?? NULL;
-
-        if($Time == NULL){
-            echo "<h3>Invalid Note Number! Try Again</h3>";
-        }else{
+        $id = $_POST['number'];
+        try{
             $result = $Mysqli->query(
-                "DELETE FROM $NoteTable
-                WHERE create_time='$Time'"
+                "SELECT EXISTS(SELECT* FROM $NoteTable
+                WHERE id='$id' AND email='".$_SESSION['email']."')", 
             );
-            echo "Note Deleted";
-            unset($_SESSION['timestamp'][$_POST['number']-1]);
+            if($result->fetch_row()[0]==0){
+                echo "<br>Enter Valid ID";
+            }else{
+                $result = $Mysqli->query(
+                    "DELETE FROM $NoteTable
+                    WHERE id='$id' AND email='".$_SESSION['email']."'"
+                );
+                echo "Note Deleted";
+            }
+        }catch(Exception $e){
+            echo "Some Error Occurred: ".$e->getMessage();
         }
     }
 
@@ -67,8 +73,8 @@
 
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-    <label for="number">Sr. No &ensp;&ensp;&ensp;: </label>
-    <input type="number" name="number" required autofocus><br>
+    <label for="number">ID No &ensp;&ensp;&ensp;: </label>
+    <input type="number" name="number" required autofocus autocomplete="off"><br>
     <button type="submit" name="submit">Delete</button>
 </form>
 <?php
