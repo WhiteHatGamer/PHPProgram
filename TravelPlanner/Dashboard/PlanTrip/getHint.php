@@ -49,6 +49,46 @@ $q = $_REQUEST['q'];
 // menu search on query
 switch ($q) {
     case 'time':
+        $time = $source = $destination = '';
+        // get strings from GET
+        $source = htmlspecialchars($_REQUEST['s']);
+        $destination = htmlspecialchars($_REQUEST['d']);
+        $way = htmlspecialchars($_REQUEST['w']);
+        
+        // checking if source and destination set
+        if(!isset($city[$source])){
+            echo "Please Select Source City";
+            exit;
+        }
+        if(!isset($city[$destination])){
+            echo "Please Select Destination City";
+            exit;
+        }
+        
+        $km = abs($city[$destination] - $city[$source]);
+        
+        switch($way){
+            case 'airplane':
+                $time = round($km/800, 3)."hr";
+                break;
+            case 'train':
+                $time = round($km/120, 3).'hr';
+                break;
+            case 'car':
+                $time = round($km/80, 3).'hr';
+                break;
+            case 'bus':
+                $time = round($km/60, 3).'hr';
+                break;
+            case 'cycle':
+                $time = round($km/15, 3).'hr';
+                break;
+            case 'walk':
+                $time = round($km/4, 3).'hr';
+                break;
+        }
+        
+        echo $time === '' ? "Select an Option" : "ETA: ".$time;
         exit;
     
     case 'searchCity':
