@@ -9,7 +9,7 @@
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
         echo "<h3>You Are Logged out Please Login Again!!!</h3><br>";
-        echo '<a href="../index.php">Home</a><br>';
+        echo '<a href="../../index.php">Home</a><br>';
         exit;
     }
     ?>
@@ -25,6 +25,8 @@
     </html>
     
     <?php
+    include __DIR__."/../inc/header.php";
+
     // Checking if Submitted Already
     if(isset($_POST['submit'])){
         $Time = $_SESSION['TimeStamp'][$_POST['number']-1] ?? NULL;
