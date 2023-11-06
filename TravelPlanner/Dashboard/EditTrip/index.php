@@ -61,6 +61,28 @@
     <?php
     }
 
+    // Confirm Edit
+    if(isset($_POST['confirm_edit'])){
+        try{
+
+            // Edit With input Data in Form Table
+            $Mysqli->query("UPDATE $JourneyTable
+                SET source='{$_POST['source']}',
+                destination='{$_POST['destination']}',
+                way='{$_POST['way']}',
+                journey='{$_POST['journey']}',
+                round='{$_POST['round']}'
+                WHERE id='{$_POST['confirm_edit']}'");
+            echo "<h3>EDITED</h3>";
+            unset($_POST);
+        }catch(Exception $e){
+
+            // Catching Exception
+            echo "<h3>Error</h3> Storing Plan Details: {$e->getMessage()}<br><br>";
+        }
+    }
+
+
     // List Upcoming Journeys as Table
     echo "<h3>Edit Journeys</h3>";
     try {
