@@ -61,6 +61,11 @@
             QueryExecuteUpdate("image", "LOAD_FILE('$source')");
             $Picture = QueryExecuteSelect("image");
         }
+        if($_POST['prefix']){
+            // Executing Update and Fetch
+            QueryExecuteUpdate("prefix", "'{$_POST['prefix']}'");
+            $Prefix = QueryExecuteSelect("prefix");
+        }
     }
 ?>
 <!DOCTYPE html>
