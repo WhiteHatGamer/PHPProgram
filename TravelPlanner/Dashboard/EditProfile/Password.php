@@ -17,14 +17,19 @@
         $changeFlag = false;
 
         try {
-            $Mysqli->query(
-                "UPDATE $UserTable
-                SET password='{$_POST['NewPassword']}'
-                WHERE email='{$_SESSION['email']}' && password='{$_POST['OldPassword']}'"
-            );
-            $changeFlag = true;
-        } catch (\Throwable $th) {
-            echo "<h3>Your old Password is Incorrect. Please Try Again!</h3><br>";
+            $result = $Mysqli->query("SELECT EXISTS(SELECT * FROM user WHERE email='{$_SESSION['email']}' && password=md5('{$_POST['OldPassword']}'))");
+            if($result->fetch_row()[0]){
+                $Mysqli->query(
+                    "UPDATE $UserTable
+                    SET password=md5('{$_POST['NewPassword']}')
+                    WHERE email='{$_SESSION['email']}' && password=md5('{$_POST['OldPassword']}')"
+                );
+                $changeFlag = true;
+            }else{
+                echo "<br>You Old Password is Incorrect Please Try Again!!!<br>";
+            }
+        } catch (Exception $e) {
+            echo "<h3>ERROR Try Again! : {$e->getMessage()}</h3><br>";
         }
         
         if($changeFlag){
