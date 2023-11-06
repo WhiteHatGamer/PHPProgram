@@ -1,7 +1,9 @@
 <?php
 
+    include __DIR__."/../inc/header.php";
+
     // Adding Connection to Database
-    require "../var.php";
+    require "../../var.php";
 
     // Start session
     session_start();
