@@ -31,12 +31,19 @@
 
     // Looping Through Result
     echo "<br><h5>Saved Notes:</h5><br>";
+    echo "<table border='1px'>";
+    echo "
+    <tr>
+        <th>Modified Time</th>
+        <th>Note</th>
+    </tr>";
     foreach ($result->fetch_all() as $key) {
-        echo "Modified Time:".$key[0];
-        echo "&emsp;";
-        echo "Note: ".$key[2];
-        echo "<br>";
+        echo "<tr>
+            <td>".date("d/M H:i",strtotime($key[0]))."</td>";
+        echo "<td>".$key[2]."</td>";
+        echo "</tr>";
     }
+    echo "</table>";
 
     // Return To Dashboard
     echo "<br>Goto ";
