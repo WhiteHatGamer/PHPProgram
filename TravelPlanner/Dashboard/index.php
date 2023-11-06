@@ -3,15 +3,21 @@
     // Adding MySQL Connection
     require "../var.php";
 
+    $CookieName = $_SERVER['REMOTE_ADDR'];
+    
     // Starting Session
     session_start();
-
+    
     if(isset($_POST['logout'])){
+        // UnSetting Cookie
+        $CookieValue = '';
+        setcookie($CookieName, $CookieValue, time() - 3600,'/');
+        session_unset();
         session_destroy();
         header("Location: ../index.php");
         exit;
     }
-
+    
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
         echo "<h3>You Are Logged out Please Login Again!!!</h3><br>";
@@ -24,10 +30,12 @@
     $name = $result->fetch_row()[0];
     if(isset($name)){
         $_SESSION['name'] = $name;
-    }else{
-        $_SESSION['name'] = $_SESSION['email'];
     }
-    ?>
+    $CookieValue = (isset($_SESSION['name']))? $_SESSION['name']:$_SESSION['email'];
+
+    // Setting Cookie
+    @setcookie($CookieName, $CookieValue, time() + (86400*30),'/');
+?>
 
     <!-- Adding Name in Title -->
     <!DOCTYPE html>
