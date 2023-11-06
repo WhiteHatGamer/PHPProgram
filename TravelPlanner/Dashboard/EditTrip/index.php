@@ -82,6 +82,32 @@
         }
     }
 
+    // Delete Confirmation
+    if(isset($_POST['delete'])){
+        echo "Confirm Delete: <br>";
+        $result = $Mysqli->query("SELECT * FROM $JourneyTable WHERE id={$_POST['delete']}");
+        echo "<form method='post' action='{$_SERVER['PHP_SELF']}'><table border='1'>
+            <tr>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Way</th>
+                <th>Journey</th>
+                <th>Return</th>
+            </tr>";
+        echo "<tr>";
+        foreach ($result->fetch_assoc() as $key => $value) {
+            if(($key=="id") || ($key=='email')){
+                continue;
+            }
+            echo "<td>".$value."</td>";
+        }
+
+        // Button with id as Value
+        echo "<td><button type='submit' name='confirm_delete' value={$_POST['delete']}>&#10003;</button></td>";
+        echo "<td><button type='submit' name='cancel'>&#9747;</button></td>";
+        echo "</tr></table></form>";
+
+    }
 
     // List Upcoming Journeys as Table
     echo "<h3>Edit Journeys</h3>";
