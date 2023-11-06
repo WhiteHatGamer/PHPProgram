@@ -28,18 +28,27 @@
 
     // Checking if Submitted Already
     if(isset($_POST['submit'])){
-        $Time = $_SESSION['TimeStamp'][$_POST['number']-1] ?? NULL;
+        $id = $_POST['number'];
 
-        if($Time == NULL){
-            echo "<h3>Invalid Note Number! Try Again</h3>";
-        }else{
-            $edit = $_POST['edit'];
+        $edit = $_POST['edit'];
+        try{
             $result = $Mysqli->query(
-                "UPDATE $NoteTable
-                SET note='$edit'
-                WHERE create_time='$Time'"
+                "SELECT EXISTS(SELECT* FROM $NoteTable
+                WHERE id='$id' AND email='".$_SESSION['email']."')", 
             );
-            echo "Note Edited";
+            if($result->fetch_row()[0]==0){
+                echo "<br>Enter Valid ID";
+            }else{
+                echo "<br>";
+                $result = $Mysqli->query(
+                    "UPDATE $NoteTable
+                    SET note='$edit'
+                    WHERE id='$id' AND email='".$_SESSION['email']."'", 
+                );
+                echo "Note Edited";
+            }
+        }catch(Exception $e){
+            echo "Error: ".$e->getMessage();
         }
     }
 
