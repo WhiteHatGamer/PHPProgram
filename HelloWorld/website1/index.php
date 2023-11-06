@@ -127,7 +127,13 @@
                 <option value="Adv.">Adv.</option>
             </select><br>
             <label for="name">Name: </label>
-            <input type="text" name="name" value="<?php echo $name; ?>" autofocus><span class="error">*<?php echo $nameErr; ?></span><br>
+            <input type="text" list="id_names" name="name" value="<?php echo $name; ?>" autofocus/>
+            <datalist id="id_names">
+                <option>Muhammed</option>
+                <option>Shakir</option>
+                <option>Kevin</option>
+                <option>Zeeshan</option>
+            </datalist><span class="error">*<?php echo $nameErr; ?></span><br>
             <label for="email">Email: </label>
             <input type="text" name="email" value="<?php echo $email; ?>"><span class="error">*<?php echo $emailErr; ?></span><br>
             <label for="website">Website: </label>
@@ -172,7 +178,7 @@
                 //     echo "Error Inserting Value=> {$e->getMessage()}";
                 // }
 
-                $table = $Mysqli->query("SELECT * from form LIMIT 15 ORDER BY id DESC");
+                $table = $Mysqli->query("SELECT * from form ORDER BY id DESC");
                 
                 // Listing Every Row in the Database with Filtering as Table
                 if($table->num_rows > 1){
