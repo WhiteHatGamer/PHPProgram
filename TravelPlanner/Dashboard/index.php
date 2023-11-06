@@ -47,20 +47,40 @@
         </head>
     </html>
 
-    <?php
-    echo "<h3>Hello ".$_SESSION['name']."</h1>";
+<div id="tabs">
+    <button onclick="travel.hidden=false, stay.hidden=true, note.hidden = true">Travel Plan</button>
+    <button onclick="travel.hidden=true, stay.hidden=false, note.hidden = true">Hotel Stay</button>
+    <button onclick="travel.hidden=true, stay.hidden=true, note.hidden = false">Travel Note</button>
 
-    // Add Menu
-    echo "Actions:<br>"
-?>
-<!-- Add Note -->
-<a href="CreateNote/index.php">Create Note</a><br>
-<!-- List Note -->
-<a href="ReadNote/index.php">Read Notes</a><br>
-<!-- Update Note -->
-<a href="UpdateNote/index.php">Update Notes</a><br>
-<!-- Delete Note -->
-<a href="DeleteNote/index.php">Delete Note</a><br>
+</div>
+<!-- Travel Plan -->
+<div id="travel" hidden>
+    <a href="PlanTrip/index.php">Plan Travel</a><br>
+    <a href="ShowTrips/index.php">Show Trips</a><br>
+    <a href="EditTrip/index.php">Edit Trip</a><br>
+</div>
+
+<!-- Stay Plan -->
+<div id="stay" hidden>
+    <a href="AppointHotel/index.php">Appoint Hotel</a><br>
+    <a href="ListStays/index.php">List Stays</a><br>
+</div>
+
+<!-- Note Operations -->
+<div id="note" hidden>
+    <!-- Add Note -->
+    <a href="CreateNote/index.php">Create Note</a><br>
+
+    <!-- List Note -->
+    <a href="ReadNote/index.php">Read Notes</a><br>
+
+    <!-- Update Note -->
+    <a href="UpdateNote/index.php">Update Notes</a><br>
+
+    <!-- Delete Note -->
+    <a href="DeleteNote/index.php">Delete Note</a><br>
+</div>
+<br>
 <!-- Log out -->
 <form action="Password.php" method="post">
     <button type="submit">Change Password</button>
