@@ -19,7 +19,7 @@
 
         // Listing the Journey to be Edited using id
         $result = $Mysqli->query("SELECT * FROM $JourneyTable WHERE id={$_POST['edit']}")->fetch_assoc();
-
+        
         // Creating Form with Table
         echo "<form method='post' action='{$_SERVER['PHP_SELF']}'><table border='1'>
             <tr>
@@ -127,37 +127,42 @@
     }
 
     // List Upcoming Journeys as Table
-    echo "<h3>Edit Journeys</h3>";
     try {
         $result = $Mysqli->query("SELECT * FROM $JourneyTable WHERE email='{$_SESSION['email']}'");
-        echo "<form method='post' action='{$_SERVER['PHP_SELF']}'><table border='3'>
-            <tr>
-                <th>Source</th>
-                <th>Destination</th>
-                <th>Way</th>
-                <th>Journey</th>
-                <th>Return</th>
-            </tr>";
-        for($i=0;$i<$result->num_rows;$i++){
-            $id = '';
-            echo "<tr>";
-            foreach ($result->fetch_assoc() as $key => $value) {
-                if($key=="id"){
-                    $id = $value;
-                    continue;
+        if(!$result->num_rows){
+            // No Data Stored
+            echo "<br>Sorry!! No Trip stored Database <br>Please Add journey Using This <b><a href='../PlanTrip/index.php'>Link</a></b>";
+        }else{
+            echo "<h3>Edit Journeys</h3>";
+            echo "<form method='post' action='{$_SERVER['PHP_SELF']}'><table border='3'>
+                <tr>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Way</th>
+                    <th>Journey</th>
+                    <th>Return</th>
+                </tr>";
+            for($i=0;$i<$result->num_rows;$i++){
+                $id = '';
+                echo "<tr>";
+                foreach ($result->fetch_assoc() as $key => $value) {
+                    if($key=="id"){
+                        $id = $value;
+                        continue;
+                    }
+                    if($key=='email'){
+                        continue;
+                    }
+                    echo "<td>".$value."</td>";
                 }
-                if($key=='email'){
-                    continue;
-                }
-                echo "<td>".$value."</td>";
-            }
 
-            // Form Action Buttons
-            echo "<td><button type='submit' name='edit' value='$id'>&#9874;</button></td>";
-            echo "<td><button type='submit' name='delete' value='$id'>&#9760;</button></td>";
-            echo "</tr>";
+                // Form Action Buttons
+                echo "<td><button type='submit' name='edit' value='$id'>&#9874;</button></td>";
+                echo "<td><button type='submit' name='delete' value='$id'>&#9760;</button></td>";
+                echo "</tr>";
+            }
+            echo "</table></form>";
         }
-        echo "</table></form>";
     } catch (Exception $e) {
         echo "<br>Some Error Occurred: {$e->getMessage()}<br>";
     }    
@@ -172,7 +177,7 @@
     <title>Edit Journeys | <?=$_SESSION['email']?></title>
     <script>
         // Ajax Scripts For requesting php
-        
+
         function getCity(str){
             // Function to suggest City
             var xmlHttp = new XMLHttpRequest();
