@@ -12,6 +12,39 @@
         echo '<a href="../../index.php">Home</a><br>';
         exit;
     }
+    
+    try{
+        $result = $Mysqli->query("SELECT * FROM $JourneyTable WHERE(email='{$_SESSION['email']}') ORDER BY journey");
+        if(!$result->num_rows){
+            // No Data Stored
+            echo "<br>Sorry!! No Trip is in Database <br>Please Add journey Using This <b><a href='../PlanTrip/index.php'>Link</a></b>";
+        }else{
+            
+            // Details Available
+            echo "<h3>Upcoming Journeys</h3>";
+            echo "<table border='3'>
+                <tr>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Way</th>
+                    <th>Journey</th>
+                    <th>Return</th>
+                </tr>";
+            for($i=0;$i<$result->num_rows;$i++){
+                echo "<tr>";
+                foreach ($result->fetch_assoc() as $key => $value) {
+                    if(($key=="id") || ($key=='email')){
+                        continue;
+                    }
+                    echo "<td>".$value."</td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+    }catch(Exception $e){
+        echo "ERROR Listing Journeys: {$e->getMessage()}";
+    }
 
 ?>
 
