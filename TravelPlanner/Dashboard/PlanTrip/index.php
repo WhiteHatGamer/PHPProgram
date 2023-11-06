@@ -10,6 +10,30 @@
         exit;
     }
 
+    // Checking if Submitted
+    if(isset($_POST['plan'])){
+        try{
+            // if return Insert that into db
+            if(isset($_POST['round'])){
+                $Mysqli->query(
+                    "INSERT INTO journey(email, source, destination, way, journey, round)
+                    VALUES('{$_SESSION['email']}', '{$_POST['source']}', '{$_POST['destination']}', '{$_POST['way']}', '{$_POST['journey']}', '{$_POST['round']}');
+                ");
+            }else{
+
+                // Insert without Return Value(Setting to NULL but editable in Edit Section)
+                $Mysqli->query(
+                    "INSERT INTO journey(email, source, destination, way, journey)
+                    VALUES('{$_SESSION['email']}', '{$_POST['source']}', '{$_POST['destination']}', '{$_POST['way']}', '{$_POST['journey']}');
+                ");
+            }
+            echo "<h3>Saved</h3>";
+        }catch(Exception $e){
+
+            // Catching Exception
+            echo "<h3>Error</h3> Storing Plan Details: {$e->getMessage()}<br><br>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
