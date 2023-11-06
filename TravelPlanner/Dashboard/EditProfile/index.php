@@ -43,6 +43,25 @@
     $Number = QueryExecuteSelect("number");
     $Gender = QueryExecuteSelect("gender");
     $DOB = QueryExecuteSelect("dob");
+    
+    // Updating Image
+    if(isset($_POST['profEdit'])){
+        
+        // Setting Format String and Initialization
+        $column = $value = '';
+        $VarReference = array(&$column, &$value);
+        
+        if(!$_FILES['image']['error']){
+            // Saving File into Database
+            $source = $_FILES['image']['tmp_name'];
+
+            // Changing Path Separator
+            $source = str_replace("\\", "/",$source);
+            
+            QueryExecuteUpdate("image", "LOAD_FILE('$source')");
+            $Picture = QueryExecuteSelect("image");
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
