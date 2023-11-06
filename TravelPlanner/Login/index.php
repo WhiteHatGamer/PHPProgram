@@ -46,6 +46,38 @@
             echo "<h3> Login Failed</h3><br>";
             echo "Retry Again...<br>";
         }
+    }elseif(isset($_POST['login'])){
+        
+        // Including Env Variables with Credentials
+        require "../var.php";
+
+        // Check if User Exists
+        try {
+ 
+            // Exception Handling of mysql Authentication Request to Hide any Password Errors
+        } catch (\Throwable $th) {
+ 
+            // Error Catches
+            echo "<h3>Error 500</h3><br>Server Error";
+            exit;
+        }
+        if($result->num_rows > 0){
+             
+            // Authentication Successful
+            //header("Location: ../CreateNote/index.php");
+            echo "<h3> Login Success</h3>";
+            echo "Click the link to go to Dashboard.";
+            for($i=0;$i<2;$i++){
+                echo ".";
+                sleep(1);
+            }
+            echo "<br>";
+
+            // Starting Session
+            @session_start(); // Already Started Session.
+            echo('<a href="../Dashboard/index.php">Dashboard</a>');
+            exit;
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -66,6 +98,9 @@
             <input name='password' id='password' type='password' required>
             <br>
             <button type="submit" name="submit">Submit</button>
+        </form>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <button type="login" name="login">Test Log-in</button>
         </form>
     </body>
 </html>
