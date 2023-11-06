@@ -13,6 +13,53 @@
         exit;
     }
 
+    // Checking if Submitted
+    if(isset($_POST['edit'])){
+        echo "Edit Details: <br>";
+
+        // Listing the Journey to be Edited using id
+        $result = $Mysqli->query("SELECT * FROM $JourneyTable WHERE id={$_POST['edit']}")->fetch_assoc();
+
+        // Creating Form with Table
+        echo "<form method='post' action='{$_SERVER['PHP_SELF']}'><table border='1'>
+            <tr>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Way</th>
+                <th>Journey</th>
+                <th>Return</th>
+            </tr>";
+        echo "<tr>";
+
+        // List Details with same form as create
+        ?>
+        <td><input type="text" name="source" id="source" required list="id_list" value="<?=$result['source']?>" onkeyup="getCity(this.value)" autocomplete="off"></td>
+        <td><input type="text" name="destination" id="destination" value="<?=$result['destination']?>" required list="id_list" onkeyup="getCity(this.value)" autocomplete="off"></td>
+        <datalist id="id_list">
+            <div id="id_city">
+            </div>
+        </datalist>
+        <td><select name="way" onchange=CalculateTime(this.value)>
+            <option value="">--select-Transport--</option>
+            <option value="airplane" <?php if($result['way']=='airplane') echo 'selected'; ?>>Airplane</option>
+            <option value="train" <?php if($result['way']=='train') echo 'selected'; ?>>Train</option>
+            <option value="car" <?php if($result['way']=='car') echo 'selected'; ?>>Car</option>
+            <option value="bus" <?php if($result['way']=='bus') echo 'selected'; ?>>Bus</option>
+            <option value="cycle" <?php if($result['way']=='cycle') echo 'selected'; ?>>Cycling</option>
+            <option value="walk" <?php if($result['way']=='walk') echo 'selected'; ?>>Walk</option>
+        </select>
+        <output name="tripTime" id="tripTime"></output></td>
+        <td><input type="datetime-local" name="journey" id="journey" required value="<?=$result['journey']?>" min="<?php echo date('Y-m-d')."T".date("H:i");?>"></td>
+        <td><input type="datetime-local" name="round" id="round" required value="<?=$result['round']?>" min="<?php echo date('Y-m-d')."T".date("H:i");?>"></td>
+        <td><button type='submit' name='confirm_edit' value="<?=$_POST['edit']?>">&#10003;</button></td>
+    </form>
+
+    <!-- Separate Form to Cancel Else Conflicts with required and Client side -->
+    <form method="post" action="<?= $_SERVER['PHP_SELF']?>">
+        <td><button type='submit' name='cancel'>&#9747;</button></td>
+        </tr></table></form>
+    <?php
+    }
 
     // List Upcoming Journeys as Table
     echo "<h3>Edit Journeys</h3>";
