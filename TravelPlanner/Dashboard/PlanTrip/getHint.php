@@ -92,6 +92,38 @@ switch ($q) {
         exit;
     
     case 'searchCity':
+        // Get string from GET with HTML filter
+        $options = '';
+        $str = htmlspecialchars($_REQUEST['s']);
+        $len = strlen($str);
+
+        // // Checking if any string entered
+        // if($len==0){
+        //     exit;
+        // }
+
+
+        // Loop through every City name in 
+        foreach($city as $key => $value){
+
+            // cut string of city to check if contains from start
+            $strip = mb_strcut($key, 0, $len);
+            // print_r($strip);
+            // exit;
+            if(!(stripos($strip, $str)===false)) {
+                // print_r($key);
+                $options = "<option>$key</option>".$options;
+            }else{
+                // removing space from key
+                $noSpace = str_replace(' ','',$key);
+                $strip = mb_strcut($noSpace, 0, $len);
+                if(!(stripos($strip, $str)===false)) {
+                    $options = "<option>$key</option>".$options;
+                }
+            }
+        }
+        // printing Option string
+        echo $options;
         exit;
     default:
         # code...
