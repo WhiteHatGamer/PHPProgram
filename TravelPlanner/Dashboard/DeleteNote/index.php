@@ -41,19 +41,27 @@
         }
     }
 
-    // Getting Every Notes Saved from User
-    $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
+        // Getting Every Notes Saved from User
+        $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
 
-    // Looping Through Result
-    echo "<br><h5>Saved Notes:</h5><br>";
-    $count =1;
-    foreach ($result->fetch_all() as $key) {
-        echo "$count - &emsp;";
-        echo $key[2];
-        echo "<br>";
-        $_SESSION['TimeStamp'][$count-1] = $key[0];
-        $count++;
-    }
+        // Looping Through Result
+        echo "<br><h5>Saved Notes:</h5><br>";
+        $count =1;
+        echo "<table border='1px'>";
+        echo "
+        <tr>
+            <th>ID No</th>
+            <th>Modified Time</th>
+            <th>Note</th>
+        </tr>";
+        foreach ($result->fetch_all() as $key) {
+            echo "<tr>
+                <td>".$key[3]."</td>
+                <td>".date("d/M H:i",strtotime($key[0]))."</td>
+                <td>".$key[2]."</td>
+            </tr>";
+        }
+        echo "</table>";
 
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
