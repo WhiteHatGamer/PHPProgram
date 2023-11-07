@@ -54,6 +54,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hotels | <?=@$_SESSION['name']?></title>
+        <script>
+            function getCity(str){
+                // Function to suggest City
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("id_city").innerHTML = this.responseText;
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=searchCity&s="+str, true);
+                xmlHttp.send();
+            }
+
     </head>
     <body>
         <?php
