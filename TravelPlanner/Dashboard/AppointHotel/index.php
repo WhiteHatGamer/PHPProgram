@@ -80,6 +80,19 @@
                 xmlHttp.send();
             }
 
+            function getExpense(hotel){
+                // Function to calculate ETA using source and destination
+                var xmlHttp = new XMLHttpRequest();
+                cityName = document.getElementById('city').value;
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("HotelExpense").value = "One Night: AED "+this.responseText;
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=getExpense&h="+hotel+"&c="+cityName, true);
+                xmlHttp.send();
+            }
+
     </head>
     <body>
         <?php
