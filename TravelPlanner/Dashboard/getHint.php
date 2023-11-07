@@ -177,6 +177,21 @@ switch ($q) {
         // Check price of one day from array
         echo $city[$CityName][1][$hotel];
         exit;
+    case 'calculateExpense':
+        $checkIn = htmlspecialchars($_REQUEST['i']);
+        $checkOut = htmlspecialchars($_REQUEST['o']);
+
+        if($checkOut <= $checkIn){
+            echo "Select Date after Check in";
+            exit;
+        }
+        $hotel = htmlspecialchars($_REQUEST['h']);
+        $cityName = htmlspecialchars($_REQUEST['c']);
+        $hotelRate = @$city[$cityName][1][$hotel];
+        $day = round((strtotime($checkOut)-strtotime($checkIn))/60/60/24, 2);
+        $fare = $hotelRate * $day;
+        echo "Estimated: AED $hotelRate * $day Night(s) => AED $fare";
+        exit;
     default:
         # code...
         exit;
