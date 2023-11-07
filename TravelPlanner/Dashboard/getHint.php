@@ -66,7 +66,7 @@ switch ($q) {
             exit;
         }
         
-        $km = abs($city[$destination] - $city[$source]);
+        $km = abs($city[$destination][0] - $city[$source][0]);
         
         switch($way){
             case 'airplane':
@@ -125,6 +125,36 @@ switch ($q) {
         }
         // printing Option string
         echo $options;
+        exit;
+    case 'getHotel':
+        // Get string from GET with HTML filter
+        $options = '';
+        $cityName = htmlspecialchars($_REQUEST['s']);
+        $len=strlen($cityName);
+
+        // // Checking if any string entered
+        if($len==0){
+            $options = "<option value=''>--Select-Hotel--</option>".$options;
+            echo ($options);
+            exit;
+        }
+        
+        // checking if City Name is Available
+        if(!isset($city[$cityName])){
+            $options = "<option value=''>--Select-Hotel--</option>".$options;
+            echo ($options);
+            exit;
+        }
+        
+        $cityValue = $city[$cityName][1];
+        foreach ($cityValue as $key => $value) {
+            $options = "<option value='$key'>$key</option>".$options;
+        }
+        
+        $options = "<option value=''>--Select-Hotel--</option>".$options;
+
+        // printing Option string
+        echo ($options);
         exit;
     default:
         # code...
