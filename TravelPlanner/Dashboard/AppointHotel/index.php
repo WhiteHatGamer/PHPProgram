@@ -12,6 +12,41 @@
         exit;
     }
 
+    if(isset($_POST['stay'])){
+
+        // Null Validation
+        if(!(@$_POST['city'])){
+            exit;
+        }
+        if(!(@$_POST['id_hotel'])){
+            exit;
+        }
+        if(!(@$_POST['checkIn'])){
+            exit;
+        }
+        if(!(@$_POST['checkOut'])){
+            exit;
+        }
+
+        // storing data into Variables
+        $city = $_POST['city'];
+        $hotel = $_POST['id_hotel'];
+        $checkIn = $_POST['checkIn'];
+        $checkOut = $_POST['checkOut'];
+
+        try {
+
+            // Insertion Query
+            $Mysqli->query("INSERT INTO $StayTable(email,city,hotel,checkIn,checkOut)
+            VALUES('{$_SESSION['email']}', '$city', '$hotel', '$checkIn', '$checkOut')");
+            echo "<h3>Data Saved</h3>";
+        } catch (\Throwable $th) {
+
+            // Catches Exception
+            echo "Error Occurred: {$th->getMessage()}<br>";
+            exit;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
