@@ -192,6 +192,14 @@ switch ($q) {
         $fare = $hotelRate * $day;
         echo "Estimated: AED $hotelRate * $day Night(s) => AED $fare";
         exit;
+    case 'calculateDate':
+        $checkIn = htmlspecialchars($_REQUEST['i']);
+        $night = (int)htmlspecialchars($_REQUEST['n']);
+
+        $day = strtotime($checkIn)+(60*60*24*$night);
+        echo date("Y-m-d",$day);
+        exit;
+
     default:
         # code...
         exit;
