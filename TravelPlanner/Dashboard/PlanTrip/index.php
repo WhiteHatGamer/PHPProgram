@@ -50,7 +50,7 @@
                     document.getElementById("id_city").innerHTML = this.responseText;
                 }
             }
-            xmlHttp.open("GET", "getHint.php?q=searchCity&s="+str, true);
+            xmlHttp.open("GET", "../getHint.php?q=searchCity&s="+str, true);
             xmlHttp.send();
         }
         function CalculateTime(way){
@@ -63,7 +63,7 @@
                     document.getElementById("tripTime").value = this.responseText;
                 }
             }
-            xmlHttp.open("GET", "getHint.php?q=time&w="+way+"&s="+source+"&d="+destination, true);
+            xmlHttp.open("GET", "../getHint.php?q=time&w="+way+"&s="+source+"&d="+destination, true);
             xmlHttp.send();
         }
     </script>
