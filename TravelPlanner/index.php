@@ -21,9 +21,9 @@
             include "inc/header.php";
         ?>
         <h3>Home</h3>
-        <a href="Register/index.php">Register</a>
+        <a href="Register/index.php"><button>Register</button></a>
         <br>
-        <a href="Login/index.php">LogIn</a>
+        <a href="Login/index.php"><button>LogIn</button></a>
         <?php include "inc/footer.php";?>
     </body>
 </html>
