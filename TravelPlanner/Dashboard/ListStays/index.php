@@ -43,6 +43,24 @@
         echo "</tr></table></form>";
 
     }
+    
+    if(isset($_POST['confirm_delete'])){
+        try{
+
+            // Checking if id Exists for resubmission of Form
+            $result = $Mysqli->query("SELECT EXISTS(SELECT * FROM $StayTable WHERE id={$_POST['confirm_delete']})");
+
+            // If exists delete and Show Message
+            if($result->fetch_row()[0]!=0){
+                $Mysqli->query("DELETE FROM $StayTable WHERE id={$_POST['confirm_delete']}");
+                echo "<br>Delete Confirmed for id: {$_POST['confirm_delete']}<br>";
+            }
+        }catch(Exception $e){
+            echo "<br>Exception Occurred : {$e->getMessage()}<br>";
+        }
+
+    }
+
 
     try{
         $result = $Mysqli->query("SELECT * FROM $StayTable WHERE(email='{$_SESSION['email']}') ORDER BY checkIn");
