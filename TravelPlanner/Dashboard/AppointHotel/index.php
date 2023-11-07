@@ -67,6 +67,19 @@
                 xmlHttp.send();
             }
 
+            function getHotels(str){
+                // Function to suggest City
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        const list = document.getElementById("id_hotel");
+                        list.innerHTML = this.response;
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=getHotel&s="+str, true);
+                xmlHttp.send();
+            }
+
     </head>
     <body>
         <?php
