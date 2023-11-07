@@ -156,6 +156,27 @@ switch ($q) {
         // printing Option string
         echo ($options);
         exit;
+    case 'getExpense':
+        // Get Hotel Name
+        $hotel = $_REQUEST['h'];
+        $CityName = $_REQUEST['c'];
+        $len = strlen($hotel);
+
+        // checking if any string exist
+        if(!isset($hotel)){
+            echo $hotel;
+            echo $CityName;
+            exit;
+        }
+
+        // Check if Hotel is Available
+        if(!isset($city[$CityName][1][$hotel])){
+            exit;
+        }
+
+        // Check price of one day from array
+        echo $city[$CityName][1][$hotel];
+        exit;
     default:
         # code...
         exit;
