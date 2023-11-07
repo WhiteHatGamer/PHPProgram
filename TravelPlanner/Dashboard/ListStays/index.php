@@ -17,6 +17,53 @@
     // print_r($_POST);
     // echo "<br>";
 
+    if(isset($_POST['edit'])){
+        echo "<br>Edit Details: <br>";
+        $result = $Mysqli->query("SELECT * FROM $StayTable WHERE id={$_POST['edit']}");
+        echo "<form method='post' name='stay' action={$_SERVER['PHP_SELF']}'><table border='1'>
+            <tr>
+                <th>City</th>
+                <th>Hotel</th>
+                <th>CheckIn</th>
+                <th>CheckOut</th>
+                <th>Night(s)</th>
+            </tr>";
+        echo "<tr>";
+        ?>
+            <td><input type="text" name="city" id="city" placeholder="Type City" required list="id_list" onkeyup="getCity(this.value)" onblur="getHotels(this.value)" autocomplete="off"></td>
+            <datalist id="id_list">
+                <div id="id_city">
+                    <!-- To be filled onKeyUp type -->
+
+                </div>
+            </datalist>
+
+            <!-- Select List Based on Selected City -->
+            <td><select id="id_hotel" name="id_hotel" onchange=getExpense(this.value)>
+                <option value="">--Select-Hotel--</option>
+            </select></td>
+            <output name="HotelExpense" id="HotelExpense"></output>
+            <br>
+            <br>
+            
+            <!-- <label for="checkIn">Check In: </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <label for="checkOut">Check Out: </label> -->
+            <!-- Date with Limit using PHP -->
+            <td><input style="width: 130px;" type="date" name="checkIn" id="checkIn" required min="<?php echo date('Y-m-d');?>"></td>
+            <td><input style="width: 130px;" type="date" name="checkOut" id="checkOut" onchange="calculateExpense(this.value)" required min="<?php echo date('Y-m-d');?>"></td>
+            <td><select id="night" name="night" onchange="calculateDate(this.value)">
+                <?php for ($i=1; $i < 31; $i++) { 
+                    echo "<option value='$i'>$i Night(s)</option>";
+                } ?>
+                <option value="31">30+ Night(s)</option>
+            </select></td>
+            <td><button type="submit" name="stay">&#10003;</button></form></td>
+            <form method="post">
+                <td><button type="submit" name="cancel">&#9747;</button></td>
+            </form>
+            </table></form>
+        <?php
+    }
 
     // Delete Confirmation
     if(isset($_POST['delete'])){
