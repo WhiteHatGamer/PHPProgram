@@ -110,6 +110,36 @@
                 calculateNight(night);
             }
             
+            function calculateDate(night){
+                // Function to calculate ETA using source and destination
+                var xmlHttp = new XMLHttpRequest();
+                checkIn  = document.getElementById('checkIn').value;
+                document.getElementById('checkOut').type = 'date';
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        checkOut = this.response;
+                        document.getElementById("checkOut").value = checkOut;
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=calculateDate&n="+night+"&i="+checkIn, true);
+                xmlHttp.send();
+                
+                // Function to calculate ETA using source and destination
+                var xmlHttp = new XMLHttpRequest();
+                checkIn  = document.getElementById('checkIn').value;
+                hotel  = document.getElementById('id_hotel').value;
+                cityName  = document.getElementById('city').value;
+                checkOut  = document.getElementById('checkOut').value;
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("HotelExpense").value = this.response;
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=calculateExpense&o="+checkOut+"&i="+checkIn+"&h="+hotel+"&c="+cityName, true);
+                xmlHttp.send();
+            }
+
+        </script>
     </head>
     <body>
         <?php
