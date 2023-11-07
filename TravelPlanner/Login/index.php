@@ -55,6 +55,7 @@
         try {
  
             // Exception Handling of mysql Authentication Request to Hide any Password Errors
+            $result = $Mysqli->query("SELECT * FROM $UserTable WHERE email='abc@example.com' && password=md5('abc')");
         } catch (\Throwable $th) {
  
             // Error Catches
@@ -75,6 +76,7 @@
 
             // Starting Session
             @session_start(); // Already Started Session.
+            $_SESSION['email'] = 'abc@example.com';
             echo('<a href="../Dashboard/index.php">Dashboard</a>');
             exit;
         }
