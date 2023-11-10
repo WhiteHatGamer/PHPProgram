@@ -87,7 +87,7 @@
         <title>Login | Travel Planner</title>
     </head>
     <body>
-        <header><a href="/TravelPlanner/index.php">Travel Planner</a></header>
+        <header><a href="../index.php">Travel Planner</a></header>
         <h1>Login</h1><br>
         <h3>Enter User Details:</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

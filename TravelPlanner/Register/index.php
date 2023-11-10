@@ -6,6 +6,7 @@
         <title>Register | Travel Planner</title>
     </head>
     <body>
+        <header><a href="../index.php">Travel Planner</a></header>
         <h1>Registration Form</h1>
         <h3>Enter Details:</h3>
         <form action="action.php" method="post">

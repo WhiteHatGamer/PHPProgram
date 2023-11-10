@@ -45,7 +45,7 @@
 </html>
 
 <?php
-    echo '<div style="width: 96px; padding: .5px; height: 20px; border: 2px solid blue;"><a href="/TravelPlanner/index.php">Travel Planner</a></div>';
+    echo '<div style="width: 96px; padding: .5px; height: 20px; border: 2px solid blue;"><a href="../index.php">Travel Planner</a></div>';
     echo "<h3>Hello ".@$_SESSION['name']."</h1>";
 ?>
 <div id="tabs">
