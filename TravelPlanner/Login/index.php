@@ -3,7 +3,7 @@
 
     // Checking If User is Logged In
     if(isset($_SESSION['email'])){
-        sleep(1);
+        sleep(0.5);
         header('Location: ../Dashboard/index.php');
     }
 
@@ -31,7 +31,7 @@
             echo "Click the link to go to Dashboard.";
             for($i=0;$i<2;$i++){
                 echo ".";
-                sleep(1);
+                sleep(0.5);
             }
             echo "<br>";
 
@@ -68,7 +68,7 @@
             //header("Location: ../CreateNote/index.php");
             echo "<h3> Login Success</h3>";
             echo "Click the link to go to Dashboard...";
-            sleep(1);
+            sleep(0.5);
             echo "<br>";
 
             // Starting Session

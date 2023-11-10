@@ -158,8 +158,36 @@
                 xmlHttp.open("GET", "../getHint.php?q=calculateDate&n="+night+"&i="+checkIn, true);
                 xmlHttp.send();
                 
-            }
+            }   
 
+            function calculateCheckOut(checkIn){
+                // Function to calculate Date after selecting CheckIn
+                var xmlHttp = new XMLHttpRequest();
+                night  = document.getElementById('night').value;
+                document.getElementById('checkOut').type = 'date';
+                xmlHttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        checkOut = this.response;
+                        document.getElementById("checkOut").value = checkOut;
+
+                        // Calculating Expense after->
+                        var xmlHttpExpense = new XMLHttpRequest();
+                        checkIn  = document.getElementById('checkIn').value;
+                        hotel  = document.getElementById('id_hotel').value;
+                        cityName  = document.getElementById('city').value;
+                        xmlHttpExpense.onreadystatechange = function(){
+                            if(this.readyState == 4 && this.status == 200){
+                                document.getElementById("HotelExpense").value = this.response;
+                            }
+                        }
+                        xmlHttpExpense.open("GET", "../getHint.php?q=calculateExpense&o="+checkOut+"&i="+checkIn+"&h="+hotel+"&c="+cityName, true);
+                        xmlHttpExpense.send();
+                    }
+                }
+                xmlHttp.open("GET", "../getHint.php?q=calculateDate&n="+night+"&i="+checkIn, true);
+                xmlHttp.send();
+                
+            }
         </script>
     </head>
     <body>
@@ -189,7 +217,7 @@
             <!-- <label for="checkIn">Check In: </label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             <label for="checkOut">Check Out: </label> -->
             <!-- Date with Limit using PHP -->
-            <input style="width: 130px;" type="text" name="checkIn" placeholder="Check In" onfocus="(this.type='date')" id="checkIn" required min="<?php echo date('Y-m-d');?>">
+            <input style="width: 130px;" type="text" name="checkIn" placeholder="Check In" onfocus="(this.type='date')" id="checkIn" onchange="calculateCheckOut(this.value)" required min="<?php echo date('Y-m-d');?>">
             <input style="width: 130px;" type="text" name="checkOut" placeholder="Check Out" onfocus="(this.type='date')" id="checkOut" onchange="calculateExpense(this.value)" required min="<?php echo date('Y-m-d');?>"><br>
             <select id="night" name="night" onchange="calculateDate(this.value)">
                 <?php for ($i=1; $i < 31; $i++) { 
