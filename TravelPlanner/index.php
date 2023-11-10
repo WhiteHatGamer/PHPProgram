@@ -2,6 +2,12 @@
     // Starting Session
     session_start();
     $CookieName = $_SERVER['REMOTE_ADDR'];
+
+    // Checking If User is Logged In
+    if(isset($_SESSION['email'])){
+        sleep(0.5);
+        header('Location: Dashboard/index.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -3,6 +3,9 @@
     // Including Env Variables with Credentials
     require "../var.php";
 
+    // Started Session
+    session_start();
+
     // Checking if Connection Success
     if($Mysqli->host_info==NULL){
         throw new Exception("Error Processing Request", 1);
@@ -30,8 +33,10 @@
                 "INSERT INTO $UserTable(`email`, `password`) values('".htmlspecialchars($_POST['email'])."',md5('".htmlspecialchars($_POST['password'])."'))"
             );
         }
+        session_unset();
+        session_destroy();
         echo "<h3>User Added</h3>";
-        echo "Go to Login Page for Adding Your First Note";
+        echo "Go to the Login Page to log in and use our services.";
         echo '<br><a href="../Login/index.php">Login Page</a>';
     }
 ?>
