@@ -29,6 +29,13 @@
 
     // Getting Every Notes Saved from User
     $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
+    
+    if(!$result->num_rows){
+            
+        // No Data Stored
+        echo "<br>Sorry!! No Notes Added in Database <br>Please Add Your Notes Using This <b><a href='../CreateNote/index.php'>Link</a></b>";
+        exit;
+    }
 
     // Looping Through Result
     echo "<br><h5>Saved Notes:</h5><br>";
