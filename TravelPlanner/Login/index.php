@@ -26,7 +26,7 @@
         if($result->num_rows > 0){
             
             // Authentication Successful
-            //header("Location: ../CreateNote/index.php");
+            header("Location: ../Dashboard/index.php");
             echo "<h3> Login Success</h3>";
             echo "Click the link to go to Dashboard.";
             for($i=0;$i<2;$i++){
@@ -67,11 +67,8 @@
             // Authentication Successful
             //header("Location: ../CreateNote/index.php");
             echo "<h3> Login Success</h3>";
-            echo "Click the link to go to Dashboard.";
-            for($i=0;$i<2;$i++){
-                echo ".";
-                sleep(1);
-            }
+            echo "Click the link to go to Dashboard...";
+            sleep(1);
             echo "<br>";
 
             // Starting Session
@@ -90,6 +87,7 @@
         <title>Login | Travel Planner</title>
     </head>
     <body>
+        <header><a href="/TravelPlanner/index.php">Travel Planner</a></header>
         <h1>Login</h1><br>
         <h3>Enter User Details:</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
