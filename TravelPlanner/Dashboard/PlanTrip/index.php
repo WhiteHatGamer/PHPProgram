@@ -1,4 +1,6 @@
 <?php
+
+    // Database Connection Include
     require "../../var.php";
 
     session_start();

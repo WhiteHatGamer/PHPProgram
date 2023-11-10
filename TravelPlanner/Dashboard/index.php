@@ -63,7 +63,10 @@
 
 <!-- Stay Plan -->
 <div id="stay" hidden>
+    <!-- Add Hotel Stays -->
     <a href="AppointHotel/index.php">Appoint Hotel</a><br>
+
+    <!-- List Stays Stored -->
     <a href="ListStays/index.php">List Stays</a><br>
 </div>
 
