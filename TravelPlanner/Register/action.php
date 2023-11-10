@@ -20,9 +20,16 @@
     }else{
         
         // User Don't Exist. Adding User
-        $result = $Mysqli->query(
-            "INSERT INTO $UserTable(`email`, `password`) values('".htmlspecialchars($_POST['email'])."',md5('".htmlspecialchars($_POST['password'])."'))"
-        );
+        if((@$_POST['name'])){
+            $result = $Mysqli->query(
+                "INSERT INTO $UserTable(name,`email`, `password`) values('".htmlspecialchars($_POST['name'])."','".htmlspecialchars($_POST['email'])."',md5('".htmlspecialchars($_POST['password'])."'))"
+            );
+        }else{
+
+            $result = $Mysqli->query(
+                "INSERT INTO $UserTable(`email`, `password`) values('".htmlspecialchars($_POST['email'])."',md5('".htmlspecialchars($_POST['password'])."'))"
+            );
+        }
         echo "<h3>User Added</h3>";
         echo "Go to Login Page for Adding Your First Note";
         echo '<br><a href="../Login/index.php">Login Page</a>';
