@@ -1,6 +1,8 @@
 <?php
     // Starting Session
     session_start();
+    
+    include __DIR__."/../inc/header.php";
 
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
@@ -17,7 +19,6 @@
         <title>Add Note | <?php echo htmlspecialchars($_SESSION['name'])?></title>
     </head>
     <body>
-        <?php include __DIR__."/../inc/header.php";?>
         <h1>Add Note</h1>
         <h3>Enter Details:</h3>
         <form action="action.php" method="post">
@@ -26,8 +27,5 @@
             <br>
             <button type="submit">Submit</button>
         </form>
-        <br>
-        Goto 
-        <a href='../index.php'>Dashboard</a>
     </body>
 </html>

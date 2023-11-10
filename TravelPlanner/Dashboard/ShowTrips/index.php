@@ -1,10 +1,11 @@
 <?php
     // Include SQL Connection
     require "../../var.php";
-    include "../inc/header.php";
-
+    
     // Start Session
     session_start();
+    
+    include "../inc/header.php";
 
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){

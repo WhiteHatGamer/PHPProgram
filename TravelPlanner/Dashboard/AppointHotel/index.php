@@ -4,6 +4,8 @@
 
     // Starting Session
     session_start();
+    
+    include "../inc/header.php";
 
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
@@ -191,9 +193,6 @@
         </script>
     </head>
     <body>
-        <?php
-            include "../inc/header.php"
-        ?>
         <h3>Hotel Stay</h3>
 
         <!-- Form Start -->
