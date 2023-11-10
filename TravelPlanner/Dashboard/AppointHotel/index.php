@@ -55,6 +55,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hotels | <?=@$_SESSION['name']?></title>
         <script>
+            async:false;
             function getCity(str){
                 // Function to suggest City
                 var xmlHttp = new XMLHttpRequest();
@@ -68,7 +69,7 @@
             }
 
             function getHotels(str){
-                // Function to suggest City
+                // Function to get City Hotels
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
@@ -81,24 +82,34 @@
             }
 
             function getExpense(hotel){
-                // Function to calculate ETA using source and destination
+                // Function to get Expense of Hotel Selected
                 var xmlHttp = new XMLHttpRequest();
                 cityName = document.getElementById('city').value;
+                night = document.getElementById('night').value;
                 xmlHttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("HotelExpense").value = "One Night: AED "+this.responseText;
+                        document.getElementById("HotelExpense").value = this.responseText;
                     }
                 }
-                xmlHttp.open("GET", "../getHint.php?q=getExpense&h="+hotel+"&c="+cityName, true);
+                xmlHttp.open("GET", "../getHint.php?q=getExpense&h="+hotel+"&c="+cityName+"&n="+night, true);
                 xmlHttp.send();
             }
 
             function calculateExpense(checkOut){
-                // Function to calculate ETA using source and destination
+                // Function to Calculate Expense Based on Days
                 var xmlHttp = new XMLHttpRequest();
                 checkIn  = document.getElementById('checkIn').value;
                 hotel  = document.getElementById('id_hotel').value;
                 cityName  = document.getElementById('city').value;
+
+                // Check if checkOut is After CheckIn
+                if(new Date(checkIn).getTime() > new Date(checkOut).getTime()){
+                    document.getElementById("HotelExpense").value = "Please Select Check Out Date After Check In";
+                    document.getElementById('checkOut').value = document.getElementById('checkIn').value;
+                    document.getElementById("night").value = 1;
+                    return;
+                };
+
                 xmlHttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
                         document.getElementById("HotelExpense").value = this.response;
@@ -168,7 +179,7 @@
             </datalist>
 
             <!-- Select List Based on Selected City -->
-            <select id="id_hotel" name="id_hotel" onchange=getExpense(this.value)>
+            <select id="id_hotel" name="id_hotel" onchange=getExpense(this.value) required>
                 <option value="">--Select-Hotel--</option>
             </select>
             <output name="HotelExpense" id="HotelExpense"></output>
