@@ -1,4 +1,6 @@
 <?php
+
+// Cities Local Database with distance and Hotels with Rate
 $city = [
     // Template: 'CityName=>[0=>distance, 1=>['HotelName'=>RateInAED, ...] ]'
     'Ajman'=>array(69,['radison'=>497, 'Crown Palace'=>172, 'mermaid'=>170]),
@@ -109,13 +111,13 @@ switch ($q) {
 
             // cut string of city to check if contains from start
             $strip = mb_strcut($key, 0, $len);
-            // print_r($strip);
-            // exit;
             if(!(stripos($strip, $str)===false)) {
-                // print_r($key);
+
+                // Add Option
                 $options = "<option>$key</option>".$options;
             }else{
-                // removing space from key
+
+                // removing space from key to suggest if entered without space also
                 $noSpace = str_replace(' ','',$key);
                 $strip = mb_strcut($noSpace, 0, $len);
                 if(!(stripos($strip, $str)===false)) {
@@ -127,12 +129,13 @@ switch ($q) {
         echo $options;
         exit;
     case 'getHotel':
+
         // Get string from GET with HTML filter
         $options = '';
         $cityName = htmlspecialchars($_REQUEST['s']);
         $len=strlen($cityName);
 
-        // // Checking if any string entered
+        // Checking if any string entered
         if($len==0){
             $options = "<option value=''>--Select-Hotel--</option>".$options;
             echo ($options);
@@ -151,6 +154,7 @@ switch ($q) {
             $options = "<option value='$key'>$key</option>".$options;
         }
         
+        // Adding the select option without Value to prevent AutoSelect
         $options = "<option value=''>--Select-Hotel--</option>".$options;
 
         // printing Option string
@@ -160,12 +164,11 @@ switch ($q) {
         // Get Hotel Name
         $hotel = $_REQUEST['h'];
         $CityName = $_REQUEST['c'];
+        $night = $_REQUEST['n'];
         $len = strlen($hotel);
 
         // checking if any string exist
         if(!isset($hotel)){
-            echo $hotel;
-            echo $CityName;
             exit;
         }
 
@@ -174,32 +177,62 @@ switch ($q) {
             exit;
         }
 
-        // Check price of one day from array
-        echo $city[$CityName][1][$hotel];
+        $hotelRate = @$city[$CityName][1][$hotel];
+        
+        if($night==1){
+            
+            // Check price of one day from array
+            echo "Estimated: AED $hotelRate for $night Night";
+        }else{
+            
+            $fare = (int)$hotelRate*(int)$night;
+            // Check price of one day from array
+            echo "Estimated: AED $hotelRate for $night Night(s) => AED $fare";
+        }
         exit;
     case 'calculateExpense':
+
+        // Calculate Expense of the Hotel with Daily into Days Chosen
+        $checkIn = htmlspecialchars($_REQUEST['i']);
+        $checkOut = htmlspecialchars($_REQUEST['o']);
+        $hotel = htmlspecialchars($_REQUEST['h']);
+        $cityName = htmlspecialchars($_REQUEST['c']);
+
+        $hotelRate = @$city[$cityName][1][$hotel];
+
+        // Checking if checkin after checkout
+        if($checkOut <= $checkIn){
+            echo "Estimated: AED $hotelRate for 1 Night";
+            exit;
+        }
+        $day = round((strtotime($checkOut)-strtotime($checkIn))/60/60/24, 2);
+        $fare = $hotelRate * $day;
+        echo "Estimated: AED $hotelRate for $day Night(s) => AED $fare";
+        exit;
+    case 'calculateDate':
+        // Calculate Date From Nights Selected
+        $checkIn = htmlspecialchars($_REQUEST['i']);
+        $night = (int)htmlspecialchars($_REQUEST['n']);
+        
+        $day = strtotime($checkIn)+(60*60*24*$night);
+        echo date("Y-m-d",$day);
+        exit;
+    case 'calculateNight':
+        // Calculate Night From CheckOut Selected
         $checkIn = htmlspecialchars($_REQUEST['i']);
         $checkOut = htmlspecialchars($_REQUEST['o']);
 
         if($checkOut <= $checkIn){
-            echo "Select Date after Check in";
+            echo "1";
             exit;
         }
-        $hotel = htmlspecialchars($_REQUEST['h']);
-        $cityName = htmlspecialchars($_REQUEST['c']);
-        $hotelRate = @$city[$cityName][1][$hotel];
+
         $day = round((strtotime($checkOut)-strtotime($checkIn))/60/60/24, 2);
-        $fare = $hotelRate * $day;
-        echo "Estimated: AED $hotelRate * $day Night(s) => AED $fare";
-        exit;
-    case 'calculateDate':
-        $checkIn = htmlspecialchars($_REQUEST['i']);
-        $night = (int)htmlspecialchars($_REQUEST['n']);
-
-        $day = strtotime($checkIn)+(60*60*24*$night);
-        echo date("Y-m-d",$day);
-        exit;
-
+        if($day<31){
+            echo "$day";
+        }else{
+            echo "31";
+        }
     default:
         # code...
         exit;
