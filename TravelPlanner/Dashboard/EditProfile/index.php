@@ -105,9 +105,10 @@
         <?php include __DIR__."/../inc/header.php"?>
         <h2>Edit Profile</h2>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
-            <label for="image">Picture: </label>
+            <img style="height:150px; width: 150px; border-radius: 50%; border: 10px solid #4F5F5F;" src="<?php if($Picture){ echo ("data:image/jpeg;base64, ".base64_encode($Picture));}?>"/>
+            <!-- <br> -->
+            <label for="image"> : </label>
             <input name="image" type="file">
-            <img src="<?php if($Picture){ echo ("data:image/jpeg;base64, ".base64_encode($Picture));}?>" width="40px" height="40px"/>
             <br>
             <label for="prefix">Prefix: </label>
             <select name="prefix">
@@ -136,6 +137,6 @@
             <button type="submit" name="profEdit">Save</button>
         </form>
         <br>
-        <a href="Password.php"><button type="button">Edit Password</button></a>
+        <a href="Password.php"><button type="button">Change Password</button></a>
     </body>
 </html>
