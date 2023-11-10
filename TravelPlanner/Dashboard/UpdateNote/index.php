@@ -12,19 +12,19 @@
         echo '<a href="../../index.php">Home</a><br>';
         exit;
     }
-    ?>
+?>
 
-    <!-- Adding Name in Title -->
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Update Note | <?php echo htmlspecialchars($_SESSION['name'])?></title>
-        </head>
-    </html>
+<!-- Adding Name in Title -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Note | <?php echo htmlspecialchars($_SESSION['name'])?></title>
+    </head>
+</html>
     
-    <?php
+<?php
     include __DIR__."/../inc/header.php";
 
     // Checking if Submitted Already
@@ -33,6 +33,8 @@
 
         $edit = $_POST['edit'];
         try{
+
+            // Checking if Note exists with that id
             $result = $Mysqli->query(
                 "SELECT EXISTS(SELECT* FROM $NoteTable
                 WHERE id='$id' AND email='".$_SESSION['email']."')", 
@@ -40,6 +42,8 @@
             if($result->fetch_row()[0]==0){
                 echo "<br>Enter Valid ID";
             }else{
+
+                // Note Exists
                 echo "<br>";
                 $result = $Mysqli->query(
                     "UPDATE $NoteTable
@@ -55,6 +59,13 @@
 
     // Getting Every Notes Saved from User
     $result = $Mysqli->query("SELECT * FROM $NoteTable WHERE email='".$_SESSION['email']."'");
+    
+    if(!$result->num_rows){
+        
+        // No Data Stored
+        echo "<br>Sorry!! No Notes Added in Database <br>Please Add Your Notes Using This <b><a href='../CreateNote/index.php'>Link</a></b>";
+        exit;
+    }
 
     // Looping Through Result
     echo "<br><h5>Saved Notes:</h5><br>";
@@ -75,6 +86,7 @@
     echo "</table>";
 
 ?>
+<!-- Edit Form -->
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
     <label for="number">ID No &ensp;&ensp;&ensp;: </label>
     <input type="number" name="number" required autofocus autocomplete="off"><br>
@@ -82,9 +94,3 @@
     <input type="text" name="edit"><br>
     <button type="submit" name="submit">Edit</button>
 </form>
-<?php
-
-    // Return To Dashboard
-    echo "<br>Goto ";
-    echo "<a href='../index.php'>Dashboard</a>";
-?>
