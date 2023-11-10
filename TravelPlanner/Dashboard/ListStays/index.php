@@ -205,5 +205,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Stays | <?=$_SESSION['name']?></title>
+    <script>
+        async:false;
+        function getCity(str){
+            // Function to suggest City
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("id_city").innerHTML = this.responseText;
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=searchCity&s="+str, true);
+            xmlHttp.send();
+        }
+
+        function getHotels(str){
+            // Function to get City Hotels
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    const list = document.getElementById("id_hotel");
+                    var prevCity = '<?=$city?>';
+                    if (prevCity==str) {
+                        list.innerHTML = "<option value='<?=$Hotel?>'><?=$Hotel?></option>" + this.response;
+                    }else{
+
+                        list.innerHTML = this.response;
+                    }
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=getHotel&s="+str, true);
+            xmlHttp.send();
+        }
+
+        function getExpense(hotel){
+            // Function to get Expense of Hotel Selected
+            var xmlHttp = new XMLHttpRequest();
+            cityName = document.getElementById('city').value;
+            night = document.getElementById('night').value;
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("HotelExpense").value = this.responseText;
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=getExpense&h="+hotel+"&c="+cityName+"&n="+night, true);
+            xmlHttp.send();
+        }
+
+        function calculateExpense(checkOut){
+            // Function to Calculate Expense Based on Days
+            var xmlHttp = new XMLHttpRequest();
+            checkIn  = document.getElementById('checkIn').value;
+            hotel  = document.getElementById('id_hotel').value;
+            cityName  = document.getElementById('city').value;
+            
+            if(new Date(checkIn).getTime() > new Date(checkOut).getTime()){
+                // CheckOut is before CheckIn
+                document.getElementById("HotelExpense").value = "Please Select Check Out Date After Check In";
+                document.getElementById('checkOut').value = document.getElementById('checkIn').value;;
+                document.getElementById("night").value = 1;
+                return;
+            };
+
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("HotelExpense").value = this.response;
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=calculateExpense&o="+checkOut+"&i="+checkIn+"&h="+hotel+"&c="+cityName, true);
+            xmlHttp.send();
+            
+            // Calculate Night
+            var xmlHttp = new XMLHttpRequest();
+            checkIn  = document.getElementById('checkIn').value;
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("night").value = this.response;
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=calculateNight&o="+checkOut+"&i="+checkIn, true);
+            xmlHttp.send();
+
+        }
+        
+        function calculateDate(night){
+            // Function to calculate Date after selecting Nights
+            var xmlHttp = new XMLHttpRequest();
+            checkIn  = document.getElementById('checkIn').value;
+            document.getElementById('checkOut').type = 'date';
+            xmlHttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    checkOut = this.response;
+                    document.getElementById("checkOut").value = checkOut;
+
+                    // Calculating Expense after selecting nights
+                    var xmlHttpExpense = new XMLHttpRequest();
+                    checkIn  = document.getElementById('checkIn').value;
+                    hotel  = document.getElementById('id_hotel').value;
+                    cityName  = document.getElementById('city').value;
+                    xmlHttpExpense.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            document.getElementById("HotelExpense").value = this.response;
+                        }
+                    }
+                    xmlHttpExpense.open("GET", "../getHint.php?q=calculateExpense&o="+checkOut+"&i="+checkIn+"&h="+hotel+"&c="+cityName, true);
+                    xmlHttpExpense.send();
+                }
+            }
+            xmlHttp.open("GET", "../getHint.php?q=calculateDate&n="+night+"&i="+checkIn, true);
+            xmlHttp.send();
+            
+        }
+    </script>
+    <?php
+    if(isset($_POST['edit'])){?>
+        <script>
+            // Calculating Expense Of the stay Editing
+            calculateExpense("<?=date('Y-m-d',$checkOut);?>");
+        </script>
+    <?php }?>
 </head>
 </html>
