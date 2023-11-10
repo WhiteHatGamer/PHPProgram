@@ -5,6 +5,8 @@
 
     session_start();
 
+    include "../inc/header.php";
+
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
         echo "<h3>You Are Logged out Please Login Again!!!</h3><br>";
@@ -71,9 +73,6 @@
     </script>
 </head>
 <body>
-    <?php
-    include "../inc/header.php"
-    ?>
     <h3>Plan Journey</h3>
 
     <!-- Conditional Radio Buttons -->

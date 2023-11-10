@@ -5,6 +5,8 @@
     // Starting Session
     session_start();
 
+    include __DIR__."/../inc/header.php";
+
     // Checking If User is Logged In
     if(!isset($_SESSION['email'])){
         echo "<h3>You Are Logged out Please Login Again!!!</h3><br>";
@@ -102,7 +104,6 @@
             }
     </style>
     <body>
-        <?php include __DIR__."/../inc/header.php"?>
         <h2>Edit Profile</h2>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
             <img style="height:150px; width: 150px; border-radius: 50%; border: 10px solid #4F5F5F;" src="<?php if($Picture){ echo ("data:image/jpeg;base64, ".base64_encode($Picture));}?>"/>
