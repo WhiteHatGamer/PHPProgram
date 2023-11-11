@@ -44,3 +44,12 @@ CREATE TABLE stay(
     FOREIGN KEY(`email`) REFERENCES form(email)
 )
 
+-- Create Table notes
+CREATE TABLE notes(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(255) NOT NULL,
+    `note` VARCHAR(128),
+    `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`email`) REFERENCES form(email)
+)
