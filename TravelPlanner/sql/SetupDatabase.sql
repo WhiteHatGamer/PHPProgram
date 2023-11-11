@@ -18,3 +18,17 @@ CREATE TABLE user(
     PRIMARY KEY(`email`)
 )
 
+-- Create Table Journey
+CREATE TABLE journey(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(255) NOT NULL,
+    `source` VARCHAR(60) NOT NULL,
+    `destination` VARCHAR(60) NOT NULL,
+    `way` enum('airplane','train','bus','cycling.','walking'),
+    `journey` DATETIME,
+    `round` DATETIME,
+    PRIMARY KEY(`id`),
+    UNIQUE KEY(`journey`),
+    FOREIGN KEY(`email`) REFERENCES form(email)
+)
+
