@@ -32,3 +32,15 @@ CREATE TABLE journey(
     FOREIGN KEY(`email`) REFERENCES form(email)
 )
 
+-- Create Table stay
+CREATE TABLE stay(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(255) NOT NULL,
+    `city` VARCHAR(60) NOT NULL,
+    `hotel` VARCHAR(60) NOT NULL,
+    `checkIn` DATE,
+    `checkOut` DATE,
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`email`) REFERENCES form(email)
+)
+
