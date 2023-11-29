@@ -217,7 +217,7 @@
             <label for="checkOut">Check Out: </label> -->
             <!-- Date with Limit using PHP -->
             <input style="width: 130px;" type="text" name="checkIn" placeholder="Check In" onfocus="(this.type='date')" id="checkIn" onchange="calculateCheckOut(this.value)" required min="<?php echo date('Y-m-d');?>">
-            <input style="width: 130px;" type="text" name="checkOut" placeholder="Check Out" onfocus="(this.type='date')" id="checkOut" onchange="calculateExpense(this.value)" required min="<?php echo date('Y-m-d');?>"><br>
+            <input style="width: 130px;" type="text" name="checkOut" placeholder="Check Out" onfocus="(this.type='date')" id="checkOut" onchange="calculateExpense(this.value)" required min="checkIn.value"><br>
             <select id="night" name="night" onchange="calculateDate(this.value)">
                 <?php for ($i=1; $i < 31; $i++) { 
                     echo "<option value='$i'>$i Night(s)</option>";
