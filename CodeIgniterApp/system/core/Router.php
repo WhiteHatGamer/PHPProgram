@@ -413,7 +413,6 @@ class CI_Router {
 				{
 					$val = preg_replace('#^'.$key.'$#', $val, $uri);
 				}
-
 				$this->_set_request(explode('/', $val));
 				return;
 			}
