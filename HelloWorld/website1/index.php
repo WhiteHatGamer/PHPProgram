@@ -271,7 +271,7 @@
         session_destroy();
         echo "<h3>Filter variables</h3>";
         ?></h5>
-        <table border="3px">
+        <table border='5px'>
             <tr>
                 <th>Filter id</th>
                 <th>Filter Name</th>
