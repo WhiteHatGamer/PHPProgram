@@ -1,0 +1,3 @@
+[submodule "CodeIgniterApp"]
+	path = CodeIgniterApp
+	url = https://github.com/WhiteHatGamer/CodeIgniterApp.git
